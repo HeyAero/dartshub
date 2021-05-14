@@ -32,25 +32,19 @@ class Navbar extends Component {
                 <header className="header">
                     <div className="nav-container">
                         <nav className="navbar">
-                            <div className="navbar-toggle" data-toggle="collapse" data-target="#navbarMain">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
+                           
                             <div className="navbar-collapse" id="navbarMain">
-                                <ul className="nav navbar-nav navbar-right">
-                                    <li>
+                               
+                                   
                                         <a href='#'>Leaderboard</a>
-                                    </li>
-                                    <li>
+                                
+                                   
                                         <button className="button" id="signup" onClick={this.onOpenModal}>Sign Up</button>
-                                    </li>
-                                    <li>
+                                
+                                   
                                         <button className="button" id="login" onClick={this.onOpenModalLogin}>Login</button>
-                                    </li>
-                                </ul>
+                                
+                             
                             </div>
                         </nav>
                     </div>
@@ -61,15 +55,20 @@ class Navbar extends Component {
                         <span className="subtitle">Please enter your information bellow...</span>
                         <form className="Register-form" noValidate="novalidate">
                             <div className="form-group">
-                                <input className="form-control" type="text" name="username" id="username" placeholder="Enter Your Username Here..." required="" autocomplete="off" aria-required="true" ></input>
+                                <input className="form-control" type="text" name="username" id="username" placeholder="Enter Your Username Here..." required="" autocomplete="off" aria-required="true" >Username: </input>
                             </div>
                             <div className="form-group">
-                                <input className="form-control" type="email" name="email" placeholder="Enter Your Email Here..." required="" autoComplete="off" aria-required="true"></input>
+                                <input className="form-control" type="email" name="email" placeholder="Enter Your Email Here..." required="" autoComplete="off" aria-required="true">Email: </input>
                             </div>
                             <div className="form-group">
-                                <input className="form-control" type="password" name="pass" placeholder="Enter Your Password Here..." required="" autoComplete="off" aria-required="true"></input>
+                                <input className="form-control" type="password" name="pass" placeholder="Enter Your Password Here..." required="" autoComplete="off" aria-required="true">Password: </input>
                             </div>
-                            <div className="button" id="signup_btn" type="button" value="Sign Up"/>
+                            <div className="form-group">
+                                <input className="form-control" type="password" name="pass" placeholder="Confirm Your Password Here..." required="" autoComplete="off" aria-required="true">Confirm Password: </input>
+                            </div>
+                            <div className="button">
+                                <button id="signup_btn" type="button" value="Sign Up">Sign Up</button>
+                            </div>
                         </form>
                     </div>
                 </Modal>
@@ -85,7 +84,9 @@ class Navbar extends Component {
                             <div className="form-group">
                                 <input className="form-control" type="password" name="pass"  placeholder="Password" required="" autocomplete="off" aria-required="true" />
                             </div>
-                            <input className="buton" id="login_btn" type="button" value="Login" />
+                            <div className="button">
+                                <button id="signup_btn" type="button" value="Sign Up">Log In</button>
+                            </div>
                         </form>
                     </div>
                 </Modal>

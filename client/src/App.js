@@ -9,7 +9,7 @@ function App(){
 
     return(
       <>
-        <Header />
+        {/* <Header /> */}
            <Switch>
           <Route exact path="/">
             <Pages.Home />
