@@ -5,3 +5,5 @@ coverage
 client/node_modules
 api/node_modules
 client/build
+api/api/api/__pycache__
+__pycache__

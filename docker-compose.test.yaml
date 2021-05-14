@@ -1,0 +1,16 @@
+services:
+  api:
+    container_name: test_api
+    depends_on:
+      - db
+    tty: true
+  db:
+    container_name: test_db
+    volumes:
+      - "test_db:/var/lib/postgresql/data"
+    environment: 
+      - POSTGRES_DB=test_dartshub
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=pass
+volumes:
+  test_db:

@@ -1,0 +1,20 @@
+
+version: '3'
+services:
+  api:
+    image: python:latest
+    working_dir: /code
+    volumes:
+      - type: bind
+        source: ./api
+        target: /code
+  db:
+    image: postgres
+    environment: 
+      - POSTGRES_DB=dartshub
+      - POSTGRES_PASSWORD=pass
+    volumes:
+      - "dbdata:/var/lib/postgresql/data"
+volumes:
+  dbdata:
+
