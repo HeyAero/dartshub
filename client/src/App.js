@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import * as Pages from './pages';
 import { Header, Footer } from './layout'
 
-// import './style.css';
+import './index.scss';
 
 function App(){
 
