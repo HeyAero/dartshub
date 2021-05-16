@@ -53,7 +53,7 @@ class Navbar extends Component {
                         </nav>
                     </div>
                 </header>
-                <Modal open={sign} onClose={this.onCloseModal} center>
+                <Modal open={sign} onClose={this.onCloseModal} >
                     <div className="modal-body">
                         <h2>Get Started Here!</h2>
                         <span className="subtitle">Please enter your information bellow...</span>
@@ -81,7 +81,7 @@ class Navbar extends Component {
                     </div>
                     
                 </Modal>
-                <Modal open={login} onClose={this.onCloseModalLogin} center>
+                <Modal open={login} onClose={this.onCloseModalLogin} >
                 
                     <div className="modal-body">
                         <h2>Login To Get Started</h2>
