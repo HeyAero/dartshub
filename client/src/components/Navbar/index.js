@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, Component } from 'react';
 import Modal from 'react-responsive-modal';
 
 class Navbar extends Component {
@@ -10,6 +10,11 @@ class Navbar extends Component {
             login: false,
         }
     }
+// const Navbar = () =>{
+//     const [open, setOpen] = React.useState(false); 
+
+
+
     onOpenModal = () => {
         this.setState({ sign: true });
     };
@@ -19,7 +24,7 @@ class Navbar extends Component {
     onCloseModal = () => {
         this.setState({ sign: false});
     };
-    onCloseModalclose = () => {
+    onCloseModalLogin = () => {
         this.setState({ login: false})
     }
 
@@ -36,56 +41,62 @@ class Navbar extends Component {
                             <div className="navbar-collapse" id="navbarMain">
                                
                                    
-                                        <a href='#'>Leaderboard</a>
+                                        <a href='leaderboard'>Leaderboard</a>
                                 
                                    
-                                        <button className="button" id="signup" onClick={this.onOpenModal}>Sign Up</button>
+                                        <button className="button" id="signup" onClick={() => setOpen(true)}>Sign Up</button>
                                 
                                    
-                                        <button className="button" id="login" onClick={this.onOpenModalLogin}>Login</button>
+                                        <button className="button" id="login" onClick={onOpenModalLogin}>Login</button>
                                 
-                             
                             </div>
                         </nav>
                     </div>
                 </header>
-                <Modal open={sign} onClose={this.onCloseModal}>
+                <Modal open={open} onClose={() => setOpen(false)} center>
                     <div className="modal-body">
                         <h2>Get Started Here!</h2>
                         <span className="subtitle">Please enter your information bellow...</span>
                         <form className="Register-form" noValidate="novalidate">
                             <div className="form-group">
-                                <input className="form-control" type="text" name="username" id="username" placeholder="Enter Your Username Here..." required="" autocomplete="off" aria-required="true" >Username: </input>
+                                <label for="username">Enter Your Username: </label>
+                                <input className="form-control" type="text" name="username" placeholder="Enter Your Username Here..." required="" autoComplete="off" aria-required="true" />
                             </div>
                             <div className="form-group">
-                                <input className="form-control" type="email" name="email" placeholder="Enter Your Email Here..." required="" autoComplete="off" aria-required="true">Email: </input>
+                                <label for="email">Enter Your Email: </label>
+                                <input className="form-control" type="email" name="email" placeholder="Enter Your Email Here..." required="" autoComplete="off" aria-required="true"/>
                             </div>
                             <div className="form-group">
-                                <input className="form-control" type="password" name="pass" placeholder="Enter Your Password Here..." required="" autoComplete="off" aria-required="true">Password: </input>
+                                <label for="pass">Enter Your Password: </label>
+                                <input className="form-control" type="password" name="pass" placeholder="Enter Your Password Here..." required="" autoComplete="off" aria-required="true" />
                             </div>
                             <div className="form-group">
-                                <input className="form-control" type="password" name="pass" placeholder="Confirm Your Password Here..." required="" autoComplete="off" aria-required="true">Confirm Password: </input>
+                                <label for="confirm-pass">Confirm Your Password: </label>
+                                <input className="form-control" type="password" name="confirm-pass" placeholder="Confirm Your Password Here..." required="" autoComplete="off" aria-required="true" />
                             </div>
                             <div className="button">
                                 <button id="signup_btn" type="button" value="Sign Up">Sign Up</button>
                             </div>
                         </form>
                     </div>
+                    
                 </Modal>
-                <Modal open={login} onClose={this.onCloseModalclose}>
+                <Modal open={open} onClose={onCloseModalLogin} center>
                 
                     <div className="modal-body">
                         <h2>Login To Get Started</h2>
                         <span className="subtitle">Enter Your Details Below</span>
-                        <form className="Login-Form" novalidate="novalidate">
+                        <form className="Login-Form" noValidate="novalidate">
                             <div className="form-group">
-                                <input className="form-control" type="text" name="username" placeholder="Enter Your Username Here..." required="" autocomplete="off" aria-required="true" />
+                            <label for="username">Enter Your username: </label>
+                                <input className="form-control" type="text" name="username" placeholder="Enter Your Username Here..." required="" autoComplete="off" aria-required="true" />Username:
                             </div>
                             <div className="form-group">
-                                <input className="form-control" type="password" name="pass"  placeholder="Password" required="" autocomplete="off" aria-required="true" />
+                            <label for="pass">Enter Your Password: </label>
+                                <input className="form-control" type="password" name="pass"  placeholder="Password" required="" autoComplete="off" aria-required="true" /> Password: 
                             </div>
                             <div className="button">
-                                <button id="signup_btn" type="button" value="Sign Up">Log In</button>
+                                <button id="login_btn" type="button" value="Sign Up">Log In</button>
                             </div>
                         </form>
                     </div>
@@ -94,6 +105,8 @@ class Navbar extends Component {
         )
     }
 }
+
+   
 
 
 export default Navbar;

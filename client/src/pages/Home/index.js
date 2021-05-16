@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar } from '../../components'
+import { Navbar, Greeting } from '../../components'
 
 const Home = () => {
  
@@ -7,8 +7,10 @@ const Home = () => {
         <>
             <header>
                 <Navbar />
-                <h1>Hello World!</h1>
             </header>
+            <body>
+                <Greeting />
+            </body>
         </>
     )
 }
