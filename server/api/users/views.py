@@ -6,7 +6,7 @@ from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser 
 from rest_framework import status
 
-from users.models import Users
+from django.contrib.auth.models import User
 from users.serializers import UsersSerializers
 from rest_framework.decorators import api_view
 
@@ -14,10 +14,10 @@ from rest_framework.decorators import api_view
 @api_view(['GET', 'POST'])
 def index(request):
   if request.method == 'GET':
-    users = Users.objects.all()
+    users = User.objects.all()
     users_serializer = UsersSerializers(users, many=True)
     return JsonResponse(users_serializer.data, safe=False)
-  elif request.methid == 'POST':
+  elif request.method == 'POST':
     users_data = JSONParser().parse(request)
     users_serializer = UsersSerializers(data=users_data)
     if users_serializer.is_valid():
