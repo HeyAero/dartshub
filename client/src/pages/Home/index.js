@@ -8,9 +8,9 @@ const Home = () => {
             <header>
                 <Navbar />
             </header>
-            <body>
-                <Greeting />
-            </body>
+            
+            <Greeting />
+            
         </>
     )
 }

@@ -44,16 +44,16 @@ class Navbar extends Component {
                                         <a href='leaderboard'>Leaderboard</a>
                                 
                                    
-                                        <button className="button" id="signup" onClick={() => setOpen(true)}>Sign Up</button>
+                                        <button className="button" id="signup" onClick={this.onOpenModal}>Sign Up</button>
                                 
                                    
-                                        <button className="button" id="login" onClick={onOpenModalLogin}>Login</button>
+                                        <button className="button" id="login" onClick={this.onOpenModalLogin}>Login</button>
                                 
                             </div>
                         </nav>
                     </div>
                 </header>
-                <Modal open={open} onClose={() => setOpen(false)} center>
+                <Modal open={sign} onClose={this.onCloseModal} center>
                     <div className="modal-body">
                         <h2>Get Started Here!</h2>
                         <span className="subtitle">Please enter your information bellow...</span>
@@ -81,7 +81,7 @@ class Navbar extends Component {
                     </div>
                     
                 </Modal>
-                <Modal open={open} onClose={onCloseModalLogin} center>
+                <Modal open={login} onClose={this.onCloseModalLogin} center>
                 
                     <div className="modal-body">
                         <h2>Login To Get Started</h2>
