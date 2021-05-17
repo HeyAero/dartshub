@@ -30,14 +30,14 @@ class RoomConsumer(AsyncWebsocketConsumer):
                 self.channel_name
             )
 
-
-            await self.channel_layer.group_send(
-                self.room_group_name,
-                {
-                    'type': 'tester_message',
-                    'playerData': 'dummy data' ,
+            if not players == 0 and len(players.keys()) == 2:
+                await self.channel_layer.group_send(
+                    self.room_group_name,
+                    {
+                        'type': 'players_connected',
+                        'data': 'Players Connected' ,
                     }
-            )          
+                )          
                     
             await self.accept()
         else:
@@ -45,28 +45,28 @@ class RoomConsumer(AsyncWebsocketConsumer):
             await self.close()
         
     
-    async def tester_message(self, event):
-        playerData = event['playerData']
+    async def players_connected(self, event):
+        playerData = event['data']
 
         await self.send(text_data = json.dumps({
-            'playerData' : playerData,
-            'channel' : 'RoomConsumer.users'
+            'data' : playerData,
         }))
 
     async def receive(self, text_data):
         text_data_json = json.loads(text_data)
-        message = text_data_json['message']
+        handler = text_data_json['type']
+        data = text_data_json['data']
 
         await self.channel_layer.group_send(
             self.room_group_name,
             {
-            'type': 'chat_message',
-            'message': message
+            'type': handler,
+            'data': data
             }
         )
     
     async def chat_message(self, event):
-        message = event['message']
+        message = event['data']
 
         await self.send(text_data = json.dumps({
             'message' : message,
