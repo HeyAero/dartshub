@@ -18,5 +18,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('game/', include('gameroom.urls')),
+=======
+    path('users/', include('users.urls')),
+    path('stats/', include('stats.urls')),
+>>>>>>> staging
 ]
