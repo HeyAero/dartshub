@@ -1,12 +1,25 @@
 import React from 'react';
-import {Sidenav} from '../../components'
+import { Sidenav, UserInformation, StatInformation } from '../../components'
 
 const User = () => {
 
     return (
         <>
-            <Sidenav />
-            
+            <div className="User-page">
+                <div id="Sidenav-layout">
+                    <Sidenav />
+                </div>
+                <div id="UserInformation-layout">
+                    <UserInformation />
+                </div>
+                <div id="StatInformation-layout">
+                    <StatInformation />
+                </div>
+
+            </div>
+
+
+
         </>
     )
 }
