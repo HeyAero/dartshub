@@ -21,28 +21,35 @@ class RoomConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'game_%s' % self.room_name
-        
-        players = channel_layer.groups.get(self.room_group_name,0)
-        
-        if players == 0 or len(players.keys()) == 1:
-            await self.channel_layer.group_add(
+        print('asd')
+        print(self.scope['user'])
+        print('asd')
+        await self.channel_layer.group_add(
                 self.room_group_name,
                 self.channel_name
             )
+        await self.accept()
+        # players = await channel_layer.groups.get(self.room_group_name,0)
+        
+        # if players == 0 or len(players.keys()) == 1:
+        #     await self.channel_layer.group_add(
+        #         self.room_group_name,
+        #         self.channel_name
+        #     )
 
-            if not players == 0 and len(players.keys()) == 2:
-                await self.channel_layer.group_send(
-                    self.room_group_name,
-                    {
-                        'type': 'players_connected',
-                        'data': 'Players Connected' ,
-                    }
-                )          
+        #     if not players == 0 and len(players.keys()) == 2:
+        #         await self.channel_layer.group_send(
+        #             self.room_group_name,
+        #             {
+        #                 'type': 'players_connected',
+        #                 'data': 'Players Connected' ,
+        #             }
+        #         )          
                     
-            await self.accept()
-        else:
+        #     await self.accept()
+        # else:
             
-            await self.close()
+        #     await self.close()
         
     
     async def players_connected(self, event):
