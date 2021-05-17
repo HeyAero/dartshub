@@ -1,36 +1,16 @@
-import React, { useState, Component } from 'react';
-import Modal from 'react-responsive-modal';
+import React from 'react';
+import Modal from 'react-modal';
 
-class Navbar extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            sign: false,
-            login: false,
-        }
-    }
-// const Navbar = () =>{
-//     const [open, setOpen] = React.useState(false); 
-
-
-
-    onOpenModal = () => {
-        this.setState({ sign: true });
-    };
-    onOpenModalLogin = () => {
-        this.setState({ login: true});
-    };
-    onCloseModal = () => {
-        this.setState({ sign: false});
-    };
-    onCloseModalLogin = () => {
-        this.setState({ login: false})
+const Navbar = () =>{
+    const [open, setOpen] = React.useState(false); 
+    function openModal() {
+        setOpen(true);
     }
 
+    function closeModal(){
+        setOpen(false);
+    }
 
-    render() {
-        const { login, sign } = this.state;
         return (
 
             <>
@@ -44,17 +24,20 @@ class Navbar extends Component {
                                         <a href='leaderboard'>Leaderboard</a>
                                 
                                    
-                                        <button className="button" id="signup" onClick={this.onOpenModal}>Sign Up</button>
+                                        <button className="button" id="signup" onClick={openModal}>Sign Up</button>
                                 
                                    
-                                        <button className="button" id="login" onClick={this.onOpenModalLogin}>Login</button>
+                                        <button className="button" id="login" onClick={openModal}>Login</button>
                                 
                             </div>
                         </nav>
                     </div>
                 </header>
-                <Modal open={sign} onClose={this.onCloseModal} >
+                <Modal isOpen={open}
+                    onRequestClose={closeModal} 
+                >
                     <div className="modal-body">
+                        <button onClick={closeModal}>Close</button>
                         <h2>Get Started Here!</h2>
                         <span className="subtitle">Please enter your information bellow...</span>
                         <form className="Register-form" noValidate="novalidate">
@@ -81,9 +64,12 @@ class Navbar extends Component {
                     </div>
                     
                 </Modal>
-                <Modal open={login} onClose={this.onCloseModalLogin} >
+                <Modal
+                    isOpen={open}
+                    onRequestClose={closeModal}  >
                 
                     <div className="modal-body">
+                     <button onClick={closeModal}>Close</button>
                         <h2>Login To Get Started</h2>
                         <span className="subtitle">Enter Your Details Below</span>
                         <form className="Login-Form" noValidate="novalidate">
@@ -104,7 +90,7 @@ class Navbar extends Component {
             </>
         )
     }
-}
+
 
    
 
