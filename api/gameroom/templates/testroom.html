@@ -31,11 +31,14 @@
             'c': 'asd',
             'd': 'asd',
         }
-          chatSocket.onopen = function() {
-            chatSocket.send(JSON.stringify({
-                'message': dummy
-            }));
-          }
+          // chatSocket.onopen = function() {
+          //   chatSocket.send(JSON.stringify({
+              
+          //           'type': 'tester_message',
+          //           'data': 'dummy data' ,
+                
+          //   }));
+          // }
 
           chatSocket.onmessage = function(e) {
               const data = JSON.parse(e.data)
@@ -61,7 +64,8 @@
             const messageInputDom = document.querySelector('#chat-message-input');
             const message = messageInputDom.value;
             chatSocket.send(JSON.stringify({
-                'message': message
+                'type': 'chat_message',
+                'data': message
             }));
             messageInputDom.value = '';
         };
