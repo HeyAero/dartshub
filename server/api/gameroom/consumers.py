@@ -49,7 +49,7 @@ class RoomConsumer(AsyncWebsocketConsumer):
         playerData = event['data']
 
         await self.send(text_data = json.dumps({
-            'data' : playerData,
+            'success' : playerData,
         }))
 
     async def receive(self, text_data):
@@ -70,6 +70,14 @@ class RoomConsumer(AsyncWebsocketConsumer):
 
         await self.send(text_data = json.dumps({
             'message' : message,
+           
+        }))
+    
+    async def score_data(self, event):
+        score_dat = event['data']
+
+        await self.send(text_data = json.dumps({
+            'score' : score_dat,
            
         }))
 
