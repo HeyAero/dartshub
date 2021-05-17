@@ -31,14 +31,14 @@
             'c': 'asd',
             'd': 'asd',
         }
-          // chatSocket.onopen = function() {
-          //   chatSocket.send(JSON.stringify({
+          chatSocket.onopen = function() {
+            chatSocket.send(JSON.stringify({
               
-          //           'type': 'tester_message',
-          //           'data': 'dummy data' ,
+                    'type': 'score_data',
+                    'data': dummy ,
                 
-          //   }));
-          // }
+            }));
+          }
 
           chatSocket.onmessage = function(e) {
               const data = JSON.parse(e.data)
