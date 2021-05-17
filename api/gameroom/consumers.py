@@ -4,36 +4,38 @@ from channels.layers import get_channel_layer
 
 channel_layer = get_channel_layer()
 
-class ChatRoomConsumer(AsyncWebsocketConsumer):
+class RoomConsumer(AsyncWebsocketConsumer):
+    users =[]
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
-        self.room_group_name = 'chat_%s' % self.room_name
+        self.room_group_name = 'game_%s' % self.room_name
+        RoomConsumer.users.append(self.room_name)
         
-
-        if not channel_layer.groups.get(self.room_group_name, 0) != 0:
+        
+        if len(RoomConsumer.users) <= 2 :
             
             await self.channel_layer.group_add(
-                self.room_group_name,
-                self.channel_name
-            )
+                    self.room_group_name,
+                    self.channel_name
+                )
 
 
             await self.channel_layer.group_send(
-                self.room_group_name,
-                {
-                    'type': 'tester_message',
-                    'tester': 'hello world' ,
-                }
-            )   
-            
-            await self.accept()
-
+                    self.room_group_name,
+                    {
+                        'type': 'tester_message',
+                        'playerData': 'dummy data' ,
+                    }
+                )       
+                
+            await self.accept()    
+    
     async def tester_message(self, event):
-        tester = event['tester']
+        playerData = event['playerData']
 
         await self.send(text_data = json.dumps({
-            'tester' : tester,
-            'channel' : channel_layer.groups
+            'playerData' : playerData,
+            'channel' : RoomConsumer.users
         }))
 
     async def receive(self, text_data):

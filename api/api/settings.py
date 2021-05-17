@@ -125,7 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-ASGI_APPLICATION = "core.asgi.application"
+ASGI_APPLICATION = "api.asgi.application"
 
 CHANNEL_LAYERS = {
     "default": {
