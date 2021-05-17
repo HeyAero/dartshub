@@ -1,17 +1,14 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import {Sidenav} from '../../components'
 
-const NotFound = () => {
-    const history = useHistory();
+const User = () => {
 
     return (
         <>
-            <header>
-                <h1>🧐 Oops!</h1>
-                <h5>...can't find {history.location.pathname}!</h5>
-            </header>
+            <Sidenav />
+            
         </>
     )
 }
 
-export default NotFound;
+export default User;

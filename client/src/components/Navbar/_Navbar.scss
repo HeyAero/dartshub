@@ -1,9 +1,12 @@
 .navbar {
     background-color: blue;
-    width: 50%;
 }
 .modal-body{
-    width: 50%;
-    margin: auto;
     background-color: aqua;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
 }
+

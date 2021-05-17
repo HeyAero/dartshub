@@ -14,12 +14,9 @@ function App(){
           <Route exact path="/">
             <Pages.Home />
           </Route>
-          <Route path="/about">
-            <Pages.About />
+          <Route path="/user">
+            <Pages.User />
           </Route>
-          {/* <Route path="/contact">
-            <Pages.Contact />
-              </Route> */}
           <Route>
             <Pages.NotFound />
           </Route>

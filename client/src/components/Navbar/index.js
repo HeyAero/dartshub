@@ -1,13 +1,21 @@
 import React from 'react';
 import Modal from 'react-modal';
 
+
+
 const Navbar = () =>{
     const [open, setOpen] = React.useState(false); 
     function openModal() {
         setOpen(true);
     }
+    function openModalLogin() {
+        setOpen(true)
+    }
 
     function closeModal(){
+        setOpen(false);
+    }
+    function closeModalLogin() {
         setOpen(false);
     }
 
@@ -27,17 +35,18 @@ const Navbar = () =>{
                                         <button className="button" id="signup" onClick={openModal}>Sign Up</button>
                                 
                                    
-                                        <button className="button" id="login" onClick={openModal}>Login</button>
+                                        <button className="button" id="login" onClick={openModalLogin}>Login</button>
                                 
                             </div>
                         </nav>
                     </div>
                 </header>
                 <Modal isOpen={open}
-                    onRequestClose={closeModal} 
+                    onRequestClose={closeModal}
+                   
                 >
                     <div className="modal-body">
-                        <button onClick={closeModal}>Close</button>
+                        <button onClick={closeModal}>X</button>
                         <h2>Get Started Here!</h2>
                         <span className="subtitle">Please enter your information bellow...</span>
                         <form className="Register-form" noValidate="novalidate">
@@ -66,10 +75,11 @@ const Navbar = () =>{
                 </Modal>
                 <Modal
                     isOpen={open}
-                    onRequestClose={closeModal}  >
+                    onRequestClose={closeModalLogin}
+                    >
                 
                     <div className="modal-body">
-                     <button onClick={closeModal}>Close</button>
+                     <button onClick={closeModalLogin}>X</button>
                         <h2>Login To Get Started</h2>
                         <span className="subtitle">Enter Your Details Below</span>
                         <form className="Login-Form" noValidate="novalidate">
