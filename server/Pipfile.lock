@@ -1,11 +1,7 @@
 {
     "_meta": {
         "hash": {
-<<<<<<< HEAD
-            "sha256": "4ac48cd4fa67c742c2d80157e24f3bb7c1abc540e3ce91df06403250dadfdae0"
-=======
             "sha256": "14d1463ce079e4fcb3fd872a39cb0ae5c8bb3d1f4fe056512bc02ceda21ccc85"
->>>>>>> staging
         },
         "pipfile-spec": 6,
         "requires": {

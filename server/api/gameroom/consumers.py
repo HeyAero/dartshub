@@ -4,38 +4,53 @@ from channels.layers import get_channel_layer
 
 channel_layer = get_channel_layer()
 
+class LobbyConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+
+        await channel_layer.send(self.channel_name, {
+            "type": "chat.message",
+            "text": channel_layer.groups, 
+            })  
+ 
+        await self.accept()
+      
+   
+
 class RoomConsumer(AsyncWebsocketConsumer):
-    users =[]
+    
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'game_%s' % self.room_name
-        RoomConsumer.users.append(self.room_name)
         
+        players = channel_layer.groups.get(self.room_group_name,0)
         
-        if len(RoomConsumer.users) <= 2 :
-            
+        if players == 0 or len(players.keys()) == 1:
             await self.channel_layer.group_add(
-                    self.room_group_name,
-                    self.channel_name
-                )
+                self.room_group_name,
+                self.channel_name
+            )
 
 
             await self.channel_layer.group_send(
-                    self.room_group_name,
-                    {
-                        'type': 'tester_message',
-                        'playerData': 'dummy data' ,
+                self.room_group_name,
+                {
+                    'type': 'tester_message',
+                    'playerData': 'dummy data' ,
                     }
-                )       
-                
-            await self.accept()    
+            )          
+                    
+            await self.accept()
+        else:
+            
+            await self.close()
+        
     
     async def tester_message(self, event):
         playerData = event['playerData']
 
         await self.send(text_data = json.dumps({
             'playerData' : playerData,
-            'channel' : RoomConsumer.users
+            'channel' : 'RoomConsumer.users'
         }))
 
     async def receive(self, text_data):
