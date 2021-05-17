@@ -8,7 +8,6 @@ from rest_framework import status
 
 from django.contrib.auth.models import User
 from users.serializers import UsersSerializers
-from stats.serializers import StatsSerializers
 from rest_framework.decorators import api_view
 
 # Create your views here.
