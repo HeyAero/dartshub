@@ -38,9 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'stats.apps.StatsConfig',
-    'users.apps.UsersConfig',
     'rest_framework',
-    'rest_framework.authtoken',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -54,12 +53,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-    ]
-}
+AUTH_USER_MODEL = "users.CustomUser"
 
 ROOT_URLCONF = 'api.urls'
 

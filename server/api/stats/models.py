@@ -1,9 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
+from users.models import CustomUser
 
 # Create your models here.
 class Stats(models.Model):
-  user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+  user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
   total_games = models.IntegerField(default=0)
   three_dart_avg = models.DecimalField(max_digits=5, decimal_places=2, default=0)
   one_dart_avg = models.DecimalField(max_digits=4, decimal_places=2, default=0)
