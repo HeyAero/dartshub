@@ -15,3 +15,13 @@ def create_stats_to_user(sender, instance=None, created=False, **kwargs):
     print('Creating user stats')
     new_stats = Stats.objects.create(user=instance)
     new_stats.save()
+
+class StatsFetch(APIView):
+    def get(self, request):
+        user = request.user
+        if user:
+          stats = Stats.objects.get(user=user)
+          return_data = StatsSerializers(stats)
+          if return_data.is_valid():
+            return_data = return_data.data
+            return Response(return_data, status=status.HTTP_200_OK)
