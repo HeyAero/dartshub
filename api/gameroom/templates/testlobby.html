@@ -29,11 +29,21 @@
           }
 
           chatSocket.onmessage = function(e) {
+              console.log(e)
               const data = JSON.parse(e.data)
-              console.log(data)
+              list = data.map( room => {
+                
+               return {room : room.fields.rname}
+              })
+              
+              console.log(list)
               
               if(data)  {
               document.querySelector('#lobby').value += (data.playersData + '\n' + data.players);
+              }
+              else if(data.rooms) {
+                console.log("aaasd")
+                console.log(data.rooms[0])
               }
           }
 
