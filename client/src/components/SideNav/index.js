@@ -1,5 +1,6 @@
 import React from "react";
-import { SidenavData } from './SidenavData'
+import { SidenavData} from './SidenavData'
+import { UserCard } from './UserCard'
 
 
 const Sidenav = () => {
@@ -7,6 +8,8 @@ const Sidenav = () => {
     return (
         <>
             <div className="Sidebar">
+                <UserCard />
+            
                 <ul className="SidebarList">
                     {SidenavData.map((val, key) => {
                         return (
