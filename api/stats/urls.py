@@ -1,7 +1,7 @@
 from django.urls import path
-from . import views
+from .views import StatsFetch
 
 urlpatterns = [
-  # path('', views.index, name='stats-index'),
+  path('user/', StatsFetch.as_view(), name='stats-user'),
   # path('<int:id>', views.individual_stats, name="stats-id")
 ]
