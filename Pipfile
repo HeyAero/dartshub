@@ -42,4 +42,4 @@ Twisted = "==21.2.0"
 pytest = "*"
 
 [requires]
-python_version = "3.9.5"
+python_version = "3.9"
