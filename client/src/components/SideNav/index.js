@@ -1,9 +1,18 @@
 import React from "react";
 import { SidenavData} from './SidenavData'
 import { UserCard } from './UserCard'
+import {JoinGame} from '../JoinGame'
+import Modal from 'react-modal';
 
 
 const Sidenav = () => {
+    // const [open, setOpen] = React.useState(false);
+    // function openModal() {
+    //     setOpen(true);
+    // }
+    // function closeModal() {
+    //     setOpen(false)
+    // }
     
     return (
         <>
