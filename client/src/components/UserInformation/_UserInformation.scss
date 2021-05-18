@@ -1,0 +1,30 @@
+.UserInfo-layout {
+    
+    h1{
+        font-size: 2rem;
+        text-align: center;
+    }
+    h4{
+        font-size: 1.2rem;
+        text-align: center;
+    }
+}
+
+#user-info{
+    table{
+        background-color: beige;
+        margin-left: 5rem;
+        margin-top: 2rem;
+    }
+    td{
+        padding: 1.5rem;
+    }
+}
+#Uname{
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+#Email{
+    font-weight: bolder;
+    font-size: 1.5rem;
+}

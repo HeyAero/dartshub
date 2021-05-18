@@ -1,0 +1,26 @@
+.User-page{
+    display: grid;
+    grid-template-columns: 20vw 120vw;
+    grid-template-rows: 50vh 50vh;
+}
+#Sidenav-layout{
+background-color: salmon;
+grid-column: 1;
+grid-row-start: 1;
+grid-row-end: span 2;
+
+}
+
+#UserInformation-layout{
+background-color: seagreen;
+width: 60%;
+grid-column: 2;
+grid-row: 1/2;
+
+}
+#StatInformation-layout{
+background-color: slategray;
+width: 60%;
+grid-column: 2;
+grid-row: 2;
+}

@@ -1,12 +1,15 @@
 import React from 'react';
+import { Navbar, Greeting, CreateGame, JoinGame } from '../../components'
 
 const Home = () => {
  
     return (
         <>
             <header>
-                <h1>Hello World!</h1>
+                <Navbar />
             </header>
+            <Greeting />
+            
         </>
     )
 }
