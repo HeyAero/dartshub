@@ -11,4 +11,29 @@ const getAuthInstance = axios.create({
     }
 });
 
+getAuthInstance.interceptors.response.use(
+  response => response,
+  error => {
+    const originalRequest = error.config;
+    if (error.response.status === 401 && error.response.statusText === "Unauthorized") {
+      const refresh_token = localStorage.getItem('refresh_token');
+      return axiosInstance
+        .post('/users/token/refresh/', {refresh: refresh_token})
+        .then((response) => {
+          localStorage.setItem('access_token', response.data.access);
+          localStorage.setItem('refresh_token', response.data.refresh);
+
+          axiosInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
+          originalRequest.headers['Authorization'] = "JWT " + response.data.access;
+
+          return axiosInstance(originalRequest);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    }
+    return Promise.reject(error);
+  }
+)
+
 export default getAuthInstance;
