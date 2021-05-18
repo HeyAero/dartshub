@@ -1,26 +1,31 @@
 import React from 'react';
-import {CurrentScore, RoundCounter, Legdisplay} from '../../components'
+import { CurrentScore, Legdisplay, OpponentScore } from '../../components'
 const Game = () => {
- 
+
     return (
         <>
-        {/* <div id="CurrentScore-layout">
-            <CurrentScore />
-        </div> */}
-        {/* <div id="RoundCounter-layout">
-            <RoundCounter />
-        </div> */}
-        <div id="Legdisplay-layout">
-            <Legdisplay />
-        </div>
-        <div id="Enter-Score">
-            <form>
-                <input type="number" id="score" placeholder="Enter Round Score Here"></input>
-            </form>
-        </div>
-           
-                
-            
+            <div className="Game-layout">
+                <div id="CurrentScore-layout">
+                    <CurrentScore />
+                </div>
+                <div id="OpponentScore-layout">
+                    <OpponentScore />
+                </div>
+
+                <div id="Legdisplay-layout">
+                    <Legdisplay />
+                </div>
+                <div id="Enter-Score">
+                    <form>
+                        <input type="number" id="score" placeholder="Enter Round Score Here"></input>
+                    </form>
+                </div>
+
+            </div>
+
+
+
+
         </>
     )
 }

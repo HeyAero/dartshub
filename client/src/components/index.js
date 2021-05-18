@@ -8,5 +8,5 @@ export { default as JoinGame } from './JoinGame';
 export { default as CreateGame } from './CreateGame';
 export { default as UserStories } from './UserStories';
 export { default as CurrentScore } from './CurrentScore';
-export { default as RoundCounter } from './RoundCounter';
 export { default as Legdisplay } from './Legdisplay';
+export { default as OpponentScore } from './OpponentScore';
