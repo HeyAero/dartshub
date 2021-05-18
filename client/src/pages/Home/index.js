@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Greeting } from '../../components'
+import { Navbar, Greeting, CreateGame, JoinGame } from '../../components'
 
 const Home = () => {
  
@@ -8,7 +8,6 @@ const Home = () => {
             <header>
                 <Navbar />
             </header>
-            
             <Greeting />
             
         </>

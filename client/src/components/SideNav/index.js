@@ -6,13 +6,13 @@ import Modal from 'react-modal';
 
 
 const Sidenav = () => {
-    const [open, setOpen] = React.useState(false);
-    function openModal() {
-        setOpen(true);
-    }
-    function closeModal() {
-        setOpen(false)
-    }
+    // const [open, setOpen] = React.useState(false);
+    // function openModal() {
+    //     setOpen(true);
+    // }
+    // function closeModal() {
+    //     setOpen(false)
+    // }
     
     return (
         <>

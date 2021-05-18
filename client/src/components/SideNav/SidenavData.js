@@ -1,5 +1,15 @@
 import React from 'react'
-import { HomeIcon, ExitToAppIcon, GroupAddIcon, PageviewIcon, SupervisorAccountIcon, StorageIcon, PersonIcon, MenuBookIcon} from '@material-ui/icons';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import HomeIcon from '@material-ui/icons/Home';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import GroupAddIcon from '@material-ui/icons/GroupAdd';
+import PageviewIcon from '@material-ui/icons/Pageview';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
+import StorageIcon from '@material-ui/icons/Storage';
+import PersonIcon from '@material-ui/icons/Person';
+import {JoinGame} from '../JoinGame';
+import {CreateGame} from '../CreateGame'
+
 
 
 
