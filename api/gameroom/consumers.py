@@ -1,6 +1,8 @@
 from channels.generic.websocket import AsyncWebsocketConsumer
+from channels.db import database_sync_to_async
 import json
 from channels.layers import get_channel_layer
+from .models import Room
 
 channel_layer = get_channel_layer()
 
@@ -17,39 +19,47 @@ class LobbyConsumer(AsyncWebsocketConsumer):
    
 
 class RoomConsumer(AsyncWebsocketConsumer):
+
+    @database_sync_to_async
+    def create_rooom(self):
+        obj, created = Room.objects.get_or_create(rname=self.room_group_name)
+        users = obj.users
+        print(users)
+        if users < 2:
+            obj.users = users + 1
+            obj.save()
+            print(obj)
+            return (1, users+1)
+        else:
+            print(obj)
+            return (0, users+1)
+
     
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'game_%s' % self.room_name
-        print('asd')
-        print(self.scope['user'])
-        print('asd')
-        await self.channel_layer.group_add(
+        room_available, users = await self.create_rooom()
+        
+        print(room_available, users)
+        if room_available:
+            await self.channel_layer.group_add(
                 self.room_group_name,
                 self.channel_name
             )
-        await self.accept()
-        # players = await channel_layer.groups.get(self.room_group_name,0)
-        
-        # if players == 0 or len(players.keys()) == 1:
-        #     await self.channel_layer.group_add(
-        #         self.room_group_name,
-        #         self.channel_name
-        #     )
 
-        #     if not players == 0 and len(players.keys()) == 2:
-        #         await self.channel_layer.group_send(
-        #             self.room_group_name,
-        #             {
-        #                 'type': 'players_connected',
-        #                 'data': 'Players Connected' ,
-        #             }
-        #         )          
+            if users == 2:
+                await self.channel_layer.group_send(
+                    self.room_group_name,
+                    {
+                        'type': 'players_connected',
+                        'data': 'Players Connected' ,
+                    }
+                )          
                     
-        #     await self.accept()
-        # else:
-            
-        #     await self.close()
+            await self.accept()
+        else:
+            self.room_group_name =""
+            await self.close()
         
     
     async def players_connected(self, event):
@@ -87,12 +97,35 @@ class RoomConsumer(AsyncWebsocketConsumer):
             'score' : score_dat,
            
         }))
-
+    
+    @database_sync_to_async
+    def delete_rooom(self):
+        Room.objects.filter(rname=self.room_group_name).delete()
+        print('deleted!')
+        # await self.delete_rooom()
 
     async def disconnect(self, close_code):
-        await self.channel_layer.group_discard(
-            self.room_group_name,
-            self.channel_name
-        )
+        if self.room_group_name:
+            await self.delete_rooom()
+            await self.channel_layer.group_send(
+                    self.room_group_name,
+                    {
+                        'type': 'player_disconnected',
+                        'data': 'disconnected' ,
+                    }
+                )       
+
+            await self.channel_layer.group_discard(
+                self.room_group_name,
+                self.channel_name
+            )
+        else:
+            print("i had no group")
+    
+    async def player_disconnected(self, event):
+        data = event['data']
+
+        await self.close()
+        
 
     pass
