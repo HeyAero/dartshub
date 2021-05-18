@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserInformation = () => {
+const UserInformation = ({username, email}) => {
     return (
         <>
             <div className="UserInfo-layout">
@@ -11,11 +11,11 @@ const UserInformation = () => {
                         <tbody>
                             <tr>
                                 <td id="Uname">Username: </td>
-                                <td>Their username</td>
+                                <td>{username}</td>
                             </tr>
                             <tr>
                                 <td id="Email">Email Address: </td>
-                                <td>Their email address</td>
+                                <td>{email}</td>
                             </tr>
                         </tbody>
                     </table>

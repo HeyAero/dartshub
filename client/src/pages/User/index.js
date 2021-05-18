@@ -11,9 +11,6 @@ const User = () => {
         async function getUserInformation() {
             try {
                 const response = await getAuthInstance.get('/users/')
-                getAuthInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
-                localStorage.setItem('access_token', response.data.access);
-                localStorage.setItem('refresh_token', response.data.refresh);
                 setUsername(response.data.username);
                 setEmail(response.data.email);
             } catch (error) {
