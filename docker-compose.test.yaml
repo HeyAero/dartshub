@@ -1,15 +1,18 @@
 services:
   api:
     container_name: test_api
+    ports: 
+      - 5000:5000
     depends_on:
       - db
+    command: bash -c "pip install -r requirements.txt && python api/manage.py makemigrations && python api/manage.py migrate && coverage run --source='.' api/manage.py test stats && coverage report"
     tty: true
   db:
     container_name: test_db
     volumes:
       - "test_db:/var/lib/postgresql/data"
     environment: 
-      - POSTGRES_DB=test_dartshub
+      - POSTGRES_DB=dartshub
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=pass
 volumes:
