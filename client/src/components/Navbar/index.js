@@ -4,11 +4,14 @@ import { getAuthInstance } from "../../actions"
 
 
 const Navbar = () =>{
-    const [open, setOpen] = React.useState(false); 
+    const [openLogin, setOpenLogin] = React.useState(false); 
+    const [openSignUp, setOpenSignUp] = React.useState(false);
 
     const [username, setUsername] = React.useState(""); 
     const [password, setPassword] = React.useState(""); 
-    const [email, setEmail] = React.useState(""); 
+    const [email, setEmail] = React.useState("");
+    
+    const [errors, setErrors] =  React.useState();
 
     function handleUsernameChange(e) {
         setUsername(e.target.value);
@@ -19,7 +22,7 @@ const Navbar = () =>{
     }
 
     function handleEmailChange(e) {
-        console.log(e);
+        setEmail(e.target.value);
     }
 
     async function handleLoginSubmit(e) {
@@ -37,26 +40,36 @@ const Navbar = () =>{
         }
     }
 
-    function handleRegistrationSubmit(e) {
+    async function handleRegistrationSubmit(e) {
         e.preventDefault();
-        console.log(e);
+        try {
+            const response = await getAuthInstance.post('/users/create/', {
+                username: username,
+                email: email,
+                password: password
+            })
+            return response;
+        } catch (error) {
+            console.log(error.stack)
+            setErrors(error.response.data)
+        }
     }
 
     function openModal() {
-        setOpen(true);
+        setOpenSignUp(true);
     }
     function openModalLogin() {
-        setOpen(true)
+        setOpenLogin(true)
     }
 
     function closeModal(){
-        setOpen(false);
+        setOpenSignUp(false);
         setUsername("");
         setPassword("");
         setEmail("");
     }
     function closeModalLogin() {
-        setOpen(false);
+        setOpenLogin(false);
         setUsername("");
         setPassword("");
     }
@@ -83,7 +96,7 @@ const Navbar = () =>{
                         </nav>
                     </div>
                 </header>
-                <Modal isOpen={open}
+                <Modal isOpen={openSignUp}
                     onRequestClose={closeModal}
                    
                 >
@@ -116,7 +129,7 @@ const Navbar = () =>{
                     
                 </Modal>
                 <Modal
-                    isOpen={open}
+                    isOpen={openLogin}
                     onRequestClose={closeModalLogin}
                     >
                 
