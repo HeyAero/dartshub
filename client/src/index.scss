@@ -3,11 +3,12 @@
 @import './variables';
 
 // Pages
-
+@import "./pages/User/User";
 // Components
-
+@import './components/Navbar/Navbar';
+@import './components/Sidenav/Sidenav';
 // Other
-
+@import './components/StatInformation/StatInformation';
 // Any Universal Styling
 
 body {
