@@ -3,7 +3,7 @@ import { Sidenav, UserInformation, StatInformation } from '../../components'
 import { getAuthInstance } from "../../actions"
 
 const User = () => {
-
+    const [auth, setAuth] = React.useState(false);
     const [username, setUsername] = React.useState(""); 
     const [email, setEmail] = React.useState(""); 
 
@@ -13,7 +13,9 @@ const User = () => {
                 const response = await getAuthInstance.get('/users/')
                 setUsername(response.data.username);
                 setEmail(response.data.email);
+                setAuth(true);
             } catch (error) {
+                setAuth(false);
                 throw error;
             }
         }
@@ -22,6 +24,7 @@ const User = () => {
 
     return (
         <>
+            { auth ? 
             <div className="User-page">
                 <div id="Sidenav-layout">
                     <Sidenav />
@@ -34,8 +37,12 @@ const User = () => {
                 </div>
 
             </div>
-
-
+            :
+            <div>
+                YOU ARE NOT AUTHORISED.
+                LOGIN!
+            </div>
+            }  
 
         </>
     )
