@@ -1,11 +1,11 @@
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
-import json
 from channels.layers import get_channel_layer
 from .models import Room
-
 from django.core import serializers
+import asyncio
 
+import json
 channel_layer = get_channel_layer()
 
 class LobbyConsumer(AsyncWebsocketConsumer):
@@ -16,22 +16,13 @@ class LobbyConsumer(AsyncWebsocketConsumer):
         
 
     async def connect(self):
-        l = await self.available_roooms()
-        await channel_layer.send(self.channel_name, {
-            "type": "room_list",
-            "rooms":  l
-            })  
-        
- 
         await self.accept()
-    
-    async def room_list(self, event):
-        rooms = event['rooms']
+        
+        while True:
+            await asyncio.sleep(10)
+            l = await self.available_roooms()
+            await self.send(text_data = l)
 
-        await self.send(text_data = rooms)
-     
-      
-   
 
 class RoomConsumer(AsyncWebsocketConsumer):
 
