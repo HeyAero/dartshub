@@ -22,6 +22,5 @@ class StatsFetch(APIView):
         if user:
           stats = Stats.objects.get(user=user)
           return_data = StatsSerializers(stats)
-          if return_data.is_valid():
-            return_data = return_data.data
-            return Response(return_data, status=status.HTTP_200_OK)
+          return_data = return_data.data
+          return Response(return_data, status=status.HTTP_200_OK)
