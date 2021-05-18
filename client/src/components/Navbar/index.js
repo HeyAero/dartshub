@@ -1,11 +1,12 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { getAuthInstance } from "../../actions"
-
+import  { Redirect } from 'react-router-dom'
 
 const Navbar = () =>{
     const [openLogin, setOpenLogin] = React.useState(false); 
     const [openSignUp, setOpenSignUp] = React.useState(false);
+    const [redirect, setRedirect] = React.useState(false);
 
     const [username, setUsername] = React.useState(""); 
     const [password, setPassword] = React.useState(""); 
@@ -35,6 +36,7 @@ const Navbar = () =>{
             getAuthInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
             localStorage.setItem('access_token', response.data.access);
             localStorage.setItem('refresh_token', response.data.refresh);
+            setRedirect(true);
         } catch (error) {
             throw error;
         }
@@ -152,6 +154,8 @@ const Navbar = () =>{
                         </form>
                     </div>
                 </Modal>
+
+                { redirect ? <Redirect to='/user'/> : <></>}
             </>
         )
     }
