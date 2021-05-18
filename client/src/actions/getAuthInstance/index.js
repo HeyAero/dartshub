@@ -17,16 +17,16 @@ getAuthInstance.interceptors.response.use(
     const originalRequest = error.config;
     if (error.response.status === 401 && error.response.statusText === "Unauthorized") {
       const refresh_token = localStorage.getItem('refresh_token');
-      return axiosInstance
+      return getAuthInstance
         .post('/users/token/refresh/', {refresh: refresh_token})
         .then((response) => {
           localStorage.setItem('access_token', response.data.access);
           localStorage.setItem('refresh_token', response.data.refresh);
 
-          axiosInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
+          getAuthInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
           originalRequest.headers['Authorization'] = "JWT " + response.data.access;
 
-          return axiosInstance(originalRequest);
+          return getAuthInstance(originalRequest);
         })
         .catch(error => {
           console.log(error);
