@@ -16,3 +16,12 @@ class CustomUserCreate(APIView):
                 json = serializer.data
                 return Response(json, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class UserView(APIView):
+    def get(self, request):
+        data = {}
+        user = request.user
+        if user:
+            data['username'] = user.username
+            data['email'] = user.email
+            return Response(data, status=status.HTTP_200_OK)
