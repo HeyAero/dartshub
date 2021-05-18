@@ -1,12 +1,7 @@
 import React from 'react'
-import HomeIcon from '@material-ui/icons/Home';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import GroupAddIcon from '@material-ui/icons/GroupAdd';
-import PageviewIcon from '@material-ui/icons/Pageview';
-import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
-import StorageIcon from '@material-ui/icons/Storage';
-import PersonIcon from '@material-ui/icons/Person';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
+import { HomeIcon, ExitToAppIcon, GroupAddIcon, PageviewIcon, SupervisorAccountIcon, StorageIcon, PersonIcon, MenuBookIcon} from '@material-ui/icons';
+
+
 
 export const SidenavData = [
     {
