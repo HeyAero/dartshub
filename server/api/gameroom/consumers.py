@@ -4,17 +4,32 @@ import json
 from channels.layers import get_channel_layer
 from .models import Room
 
+from django.core import serializers
+
 channel_layer = get_channel_layer()
 
 class LobbyConsumer(AsyncWebsocketConsumer):
-    async def connect(self):
+    @database_sync_to_async
+    def available_roooms(self):
+        serialized_data = serializers.serialize("json", Room.objects.filter(users=1))
+        return serialized_data
+        
 
+    async def connect(self):
+        l = await self.available_roooms()
         await channel_layer.send(self.channel_name, {
-            "type": "chat.message",
-            "text": channel_layer.groups, 
+            "type": "room_list",
+            "rooms":  l
             })  
+        
  
         await self.accept()
+    
+    async def room_list(self, event):
+        rooms = event['rooms']
+
+        await self.send(text_data = rooms)
+     
       
    
 
@@ -102,7 +117,7 @@ class RoomConsumer(AsyncWebsocketConsumer):
     def delete_rooom(self):
         Room.objects.filter(rname=self.room_group_name).delete()
         print('deleted!')
-        # await self.delete_rooom()
+       
 
     async def disconnect(self, close_code):
         if self.room_group_name:
@@ -124,7 +139,6 @@ class RoomConsumer(AsyncWebsocketConsumer):
     
     async def player_disconnected(self, event):
         data = event['data']
-
         await self.close()
         
 
