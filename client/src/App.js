@@ -17,8 +17,8 @@ function App(){
           <Route path="/user">
             <Pages.User />
           </Route>
-          <Route>
-            <Pages.NotFound />
+          <Route path="/game">
+            <Pages.Game />
           </Route>
         </Switch>
         <Footer />
