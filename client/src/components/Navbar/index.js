@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { getAuthInstance } from "../../actions"
 
 
 const Navbar = () =>{
@@ -21,9 +22,19 @@ const Navbar = () =>{
         console.log(e);
     }
 
-    function handleLoginSubmit(e) {
+    async function handleLoginSubmit(e) {
         e.preventDefault();
-        console.log(e);
+        try {
+            const response = await getAuthInstance.post('/users/token/obtain/', {
+                username: username,
+                password: password
+            })
+            getAuthInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
+            localStorage.setItem('access_token', response.data.access);
+            localStorage.setItem('refresh_token', response.data.refresh);
+        } catch (error) {
+            throw error;
+        }
     }
 
     function handleRegistrationSubmit(e) {

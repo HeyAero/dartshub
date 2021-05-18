@@ -1,7 +1,8 @@
-import API_ADDRESS from '../'
+import { API_ADDRESS } from '../globalVars'
+import axios from 'axios'
 
 const getAuthInstance = axios.create({
-    baseURL: `${API_ADDRESS}/api/`,
+    baseURL: `${API_ADDRESS}`,
     timeout: 5000,
     headers: {
         'Authorization': "JWT " + localStorage.getItem('access_token'),
