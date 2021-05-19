@@ -1,12 +1,20 @@
 import React from 'react';
+import { Navbar, Greeting, UserStories } from '../../components'
 
 const Home = () => {
- 
+
     return (
         <>
             <header>
-                <h1>Hello World!</h1>
+                <Navbar />
             </header>
+            <div id="Greeting-layout">
+                <Greeting />
+            </div>
+            <div id="UserStories-layout">
+                <UserStories />
+            </div>
+
         </>
     )
 }

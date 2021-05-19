@@ -7,3 +7,8 @@ api/node_modules
 client/build
 api/api/api/__pycache__
 __pycache__
+api/.coverage
+api/api/.coverage
+api/gameroom/.coverage
+api/stats/.coverage
+api/users/.coverage

@@ -3,11 +3,27 @@
 @import './variables';
 
 // Pages
-
+@import "./pages/User/User";
+@import "./pages/Game/Game";
+@import "./pages/Leaderboard/Leaderboard";
+@import './pages/Home/Home';
 // Components
-
+@import './components/Navbar/Navbar';
+@import './components/Sidenav/Sidenav';
+@import './components/UserInformation/UserInformation';
+@import './components/Sidenav/UserCards';
+@import './components/CreateGame/CreateGame';
+@import './components/JoinGame/JoinGame';
+@import './components/CurrentScore/CurrentScore';
+@import './components/Legdisplay/Legdisplay';
+@import './components/OpponentScore/OpponentScore';
+@import './components/ScoreRundown/ScoreRundown';
+@import './components/GameNavbar/GameNavbar';
+@import './components/ThreeDartTable/ThreeDartTable';
+@import './components/WinsTable/WinsTable';
+@import './components/HowTo/HowTo';
 // Other
-
+@import './components/StatInformation/StatInformation';
 // Any Universal Styling
 
 body {
