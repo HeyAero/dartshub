@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 import React, { useEffect } from 'react';
 import { CurrentScore, Legdisplay, OpponentScore, Video } from '../../components'
 import Jitsi from 'react-jitsi'
 
 
+=======
+import React from 'react';
+import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown } from '../../components'
+>>>>>>> 593922a2ed0785df2b2da5b30013b450ff931a3b
 const Game = () => {
 
     useEffect(()=>{
@@ -51,6 +56,9 @@ const Game = () => {
 
                 <div id="Legdisplay-layout">
                     <Legdisplay />
+                </div>
+                <div id="ScoreRundown-layout">
+                    <ScoreRundown />
                 </div>
                 <div id="Enter-Score">
                     <form>
