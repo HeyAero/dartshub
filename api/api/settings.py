@@ -106,15 +106,14 @@ WSGI_APPLICATION = 'api.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dartshub',
-        'USER': 'admin',
-        'PASSWORD': 'pass',
-        'HOST': 'db',
-        'PORT': '5432',
+        'NAME': 'd7v0avjv8ei1o3',
+        'USER': 'ksedsdilkitytt',
+        'PASSWORD': '2e3db6d07d08aeef44dff0058168e39b2343c7600f9e923e7033a743e6228783',
+        'HOST': 'ec2-176-34-105-15.eu-west-1.compute.amazonaws.com',
+        'PORT': 5432,
         'CONN_MAX_AGE': 500,
     }
 }
