@@ -56,3 +56,4 @@ const Sidenav = ({showCreateGame, setShowCreateGame, showJoinGame, setShowJoinGa
 }
 
 export default Sidenav;
+
