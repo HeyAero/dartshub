@@ -4,19 +4,29 @@ import { useLocation } from 'react-router-dom'
 const Game = () => {
 
     const [oppUsername, setOppUsername] = React.useState("")
+    const [inputScore, setInputScore] = React.useState(0)
+    const [myScore, setMyScore] = React.useState(501)
+    const [oppScore, setOppScore] = React.useState(501)
+    const [socket, setSocket] = React.useState()
+    
 
     let data = useLocation()
     let code = data.state.code;
     let legs = data.state.legs;
+    let creator = data.state.creator;
+
+    const [turn, setTurn] = React.useState(creator)
 
     const runConnect = () => {
         const chatSocket = new WebSocket('ws://' + 'localhost:8000' +'/ws/chat/'  + code +'/')
+        setSocket(chatSocket)
         chatSocket.onopen = function() {
             console.log('workingggg')
           }
         
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data)
+            console.log(data)
 
             if (data.success) {
                 console.log("success")
@@ -28,8 +38,13 @@ const Game = () => {
                 }
             } else if (data.message) {
                 console.log('message recieved');
-            } else if (data.score) {
+            } else if (data.score.creator !== creator) {
                 console.log('score recieved!');
+                console.log(data.score)
+                console.log("TURN BEFORE RECIEVE" + turn)
+                setTurn(prevstate => !prevstate)
+                console.log(!true)
+                console.log("TURN AFTER RECIEVE" + turn)
             } else {
                 console.log(`Sorry, server response doesn't match cases`);
             }
@@ -56,9 +71,26 @@ const Game = () => {
     }, [])
 
 
-    console.log("TEST")
-    console.log(code)
-    console.log(legs)
+    function sendScore() {
+        try {
+            socket.send(JSON.stringify({
+                'type': 'score_data',
+                'data': { creator, score: inputScore}
+            })); 
+        } catch (error) {
+             console.log(error)
+         }
+    }
+
+    function handleScoreSubmit(e) {
+        e.preventDefault();
+        setTurn(prevstate => !prevstate);
+        sendScore();
+    }
+
+    function handleScoreChange(e) {
+        setInputScore(e.target.value)
+    }
 
     return (
         <>
@@ -69,7 +101,7 @@ const Game = () => {
                     <CurrentScore />
                 </div>
                 <div id="OpponentScore-layout">
-                    <OpponentScore oppUsername={oppUsername} />
+                    <OpponentScore myScore={myScore} oppScore={oppScore} oppUsername={oppUsername} />
                 </div>
 
                 <div id="Legdisplay-layout">
@@ -79,8 +111,9 @@ const Game = () => {
                     <ScoreRundown />
                 </div>
                 <div id="Enter-Score">
-                    <form>
-                        <input type="number" id="score" placeholder="Enter Round Score Here"></input>
+                    <form onSubmit={handleScoreSubmit}>
+                        <input type="number" id="score" placeholder="Enter Round Score Here" disabled={!turn} onChange={handleScoreChange} value={inputScore}/>
+                        <input type="submit" id="submit-score" value="Submit"/>
                     </form>
                 </div>
 

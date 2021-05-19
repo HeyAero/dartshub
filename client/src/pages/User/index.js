@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sidenav, UserInformation, StatInformation, CreateGame } from '../../components'
+import { Sidenav, UserInformation, StatInformation, CreateGame, JoinGame } from '../../components'
 import { getAuthInstance } from "../../actions"
 
 const User = () => {
@@ -25,6 +25,7 @@ const User = () => {
     const [hit0, setHit0] = React.useState(""); 
     // Modals
     const [showCreateGame, setShowCreateGame] = React.useState(false);
+    const [showJoinGame, setShowJoinGame] = React.useState(false);
     async function getStatsInformation() {
         try {
             const response = await getAuthInstance.get('/stats/user/')
@@ -72,8 +73,11 @@ const User = () => {
                 <div id="createGameModal" style={showCreateGame ? {display: "block"} : {display: "none"}}>
                     <CreateGame/>
                 </div>
+                <div id="createGameModal" style={showJoinGame ? {display: "block"} : {display: "none"}}>
+                    <JoinGame/>
+                </div>
                 <div id="Sidenav-layout">
-                    <Sidenav showCreateGame={showCreateGame} setShowCreateGame={setShowCreateGame} />
+                    <Sidenav showCreateGame={showCreateGame} setShowCreateGame={setShowCreateGame} showJoinGame={showJoinGame} setShowJoinGame={setShowJoinGame} />
                 </div>
                 <div id="UserInformation-layout">
                     <UserInformation username={username} email={email} />

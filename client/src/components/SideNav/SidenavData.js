@@ -27,7 +27,7 @@ export const SidenavData = [
     {
         title: "Search For A Game",
         icon: <PageviewIcon />,
-        link: "/home"
+        link: "join"
     },
     {
         title: "Single Player",
