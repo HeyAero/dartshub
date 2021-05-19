@@ -23,6 +23,9 @@ function App(){
           <Route path="/leaderboard">
             <Pages.Leaderboard />
           </Route>
+          <Route path="/lobby">
+            <Pages.Lobby />
+          </Route>
         </Switch>
         <Footer />
       </>
