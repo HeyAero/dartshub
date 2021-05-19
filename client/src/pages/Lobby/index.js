@@ -36,7 +36,7 @@ const Lobby= () => {
     }, [])
 
     const renderLobby =() => {
-        if(rooms) {
+        if(rooms.length) {
         return rooms.map( (r, i)=> {  
             console.log(r)
             let name =r.room.replace('game_','')
@@ -50,7 +50,7 @@ const Lobby= () => {
             )
         })
         }else {
-            return <p>No Games Currently available</p>
+            return (<p>No Games Currently available</p>)
         }
     }
    

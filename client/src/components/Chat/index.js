@@ -3,7 +3,6 @@ import React, {useRef} from 'react';
 
 const Chat = ({chatSocket}) => {
     const inputRef = useRef()
-    const tbox = useRef()
 
     function handleSubmit(e) {
         e.preventDefault
@@ -27,8 +26,7 @@ const Chat = ({chatSocket}) => {
 
     return(
       
-        <div id="chat-box" >
-        <textarea ref= {tbox}id="chat-log" cols="30" rows="10" disabled></textarea><br></br>
+        <div id="chat-inputs" >
         <input ref={inputRef} id="chat-message-input" type="text" size="30"onKeyUp={handleInput}></input><br></br>
         <input id="chat-message-submit" type="button" value="Send" onClick={handleSubmit}></input>
         </div>

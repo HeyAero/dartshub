@@ -67,7 +67,9 @@ const Game = () => {
                     }
                 }
             } else if (data.message) {
+                console.log(textboxRef)
                 textboxRef.current.value += (data.message + '\n');
+                textboxRef.current.scrollTop = textboxRef.current.scrollHeight
                 console.log('message recieved');
             } else if (data.score.creator !== creator) {
                 updateScore(data.score.score, setOppScore)
@@ -279,7 +281,10 @@ const Game = () => {
                         <input type="submit" id="submit-score" value="Submit"/>
                     </form>
                 </div>
-                <Chat chatSocket={socket ? socket: null} textboxRef={textboxRef? textboxRef: null}/>
+                <div id="chatbox">
+                <textarea ref= {textboxRef} id="chat-log" cols="30" rows="10" disabled></textarea><br></br>
+                <Chat ref={textboxRef} chatSocket={socket ? socket: null} />
+                </div>
 
             </div>
         </>
