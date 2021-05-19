@@ -12,3 +12,4 @@ export { default as Legdisplay } from './Legdisplay';
 export { default as OpponentScore } from './OpponentScore';
 export { default as ScoreRundown } from './ScoreRundown';
 export { default as GameNavbar } from './GameNavbar';
+export { default as LeaderboardNav } from './LeaderboardNav';

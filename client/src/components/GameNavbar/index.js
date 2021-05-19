@@ -29,7 +29,8 @@ const GameNavbar = () => {
                     </nav>
                 </div>
             </header>
-            <Modal isOpen={openLogout}
+            <Modal 
+                id="logout-modal" isOpen={openLogout}
                 onRequestClose={closeModalLogout}>
                 <div className="confirm">
                     <form id="logout" >
