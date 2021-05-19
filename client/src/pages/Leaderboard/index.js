@@ -1,14 +1,25 @@
-import React from 'react';
-import { LeaderboardNav} from '../../components'
+import React from "react";
+import { LeaderboardNav, ThreeDartTable, WinsTable } from '../../components'
 
 const Leaderboard = () => {
- 
+
     return (
         <>
-            <header>
-                <LeaderboardNav />
-            </header>
-            
+            <div id="Leaderboard-layout">
+                
+                <header id="LeaderNav">
+                    <LeaderboardNav />
+                </header>
+                <div id="WinsTable-layout">
+                    <WinsTable />
+                </div>
+                <div id="ThreeDart-layout">
+                    <ThreeDartTable />
+                </div>
+
+            </div>
+
+
         </>
     )
 }
