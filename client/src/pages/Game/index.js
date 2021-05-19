@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
-import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown, Video, GameNavbar } from '../../components'
+import React, { useEffect, useRef } from 'react';
+import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown, Video, GameNavbar, Chat} from '../../components'
 import { useLocation } from 'react-router-dom'
 import { getAuthInstance } from "../../actions"
 const Game = () => {
+
+    const textboxRef = useRef()
 
     const [oppUsername, setOppUsername] = React.useState("")
     const [inputScore, setInputScore] = React.useState(0)
@@ -65,6 +67,7 @@ const Game = () => {
                     }
                 }
             } else if (data.message) {
+                textboxRef.current.value += (data.message + '\n');
                 console.log('message recieved');
             } else if (data.score.creator !== creator) {
                 updateScore(data.score.score, setOppScore)
@@ -276,6 +279,7 @@ const Game = () => {
                         <input type="submit" id="submit-score" value="Submit"/>
                     </form>
                 </div>
+                <Chat chatSocket={socket ? socket: null} textboxRef={textboxRef? textboxRef: null}/>
 
             </div>
         </>

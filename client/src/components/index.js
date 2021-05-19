@@ -17,3 +17,4 @@ export { default as LeaderboardNav } from './LeaderboardNav';
 export { default as WinsTable } from './WinsTable';
 export { default as ThreeDartTable } from './ThreeDartTable';
 export { default as HowTo } from './HowTo';
+export { default as Chat } from './Chat';
