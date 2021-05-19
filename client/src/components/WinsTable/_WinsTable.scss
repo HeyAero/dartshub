@@ -1,0 +1,20 @@
+.WinsTable {
+    width: 100%;
+    background-color: brown;
+    text-align: center;
+    
+    th{
+        background-color: cadetblue;
+        height: 5rem;
+        font-size: 1.3rem;
+        border-bottom: 1px solid black;
+    }
+    tr:hover{
+        background-color: cornflowerblue;
+    }
+    td{
+        height: 3rem;
+        font-size: 1rem;
+        border-bottom: 1px solid black;
+    }
+}

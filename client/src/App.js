@@ -20,6 +20,9 @@ function App(){
           <Route path="/game">
             <Pages.Game />
           </Route>
+          <Route path="/leaderboard">
+            <Pages.Leaderboard />
+          </Route>
         </Switch>
         <Footer />
       </>

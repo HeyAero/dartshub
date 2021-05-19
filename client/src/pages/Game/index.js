@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown, Video } from '../../components'
+import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown, Video, GameNavbar } from '../../components'
 import { useLocation } from 'react-router-dom'
 import { getAuthInstance } from "../../actions"
 const Game = () => {
@@ -249,6 +249,9 @@ const Game = () => {
 
     return (
         <>
+        <header>
+            <GameNavbar />
+        </header>
             <div className="Game-layout">
                 <div className="display-winner" style={gameOver ? {display: "block"} : {display: "none"}}>
                     <p>{whoIsWinning()}</p>
