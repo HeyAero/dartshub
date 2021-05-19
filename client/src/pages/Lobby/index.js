@@ -42,10 +42,10 @@ const Lobby= () => {
             let name =r.room.replace('game_','')
             return (
                 <div id='roomdiv' key= {i}>
-                    <h4>room : {name}</h4>
+                    <h4>room : {i+1}</h4>
                     <Link to={{
                         pathname: "/game",
-                        state: {code: name, creator:false}}}>Room Name: {name}</Link>
+                        state: {code: name, creator:false}}}>Name: {name}</Link>
                 </div>
             )
         })
