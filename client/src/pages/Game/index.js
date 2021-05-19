@@ -1,5 +1,5 @@
 import React from 'react';
-import { CurrentScore, Legdisplay, OpponentScore } from '../../components'
+import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown } from '../../components'
 const Game = () => {
 
     return (
@@ -14,6 +14,9 @@ const Game = () => {
 
                 <div id="Legdisplay-layout">
                     <Legdisplay />
+                </div>
+                <div id="ScoreRundown-layout">
+                    <ScoreRundown />
                 </div>
                 <div id="Enter-Score">
                     <form>

@@ -10,3 +10,4 @@ export { default as UserStories } from './UserStories';
 export { default as CurrentScore } from './CurrentScore';
 export { default as Legdisplay } from './Legdisplay';
 export { default as OpponentScore } from './OpponentScore';
+export { default as ScoreRundown } from './ScoreRundown';
