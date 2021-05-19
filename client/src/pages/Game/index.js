@@ -7,15 +7,19 @@ const Game = () => {
     const [inputScore, setInputScore] = React.useState(0)
     const [myScore, setMyScore] = React.useState(501)
     const [oppScore, setOppScore] = React.useState(501)
+    const [legsWon, setLegsWon] = React.useState({me: 0, opp: 0})
     const [socket, setSocket] = React.useState()
+    const [currentLeg, setCurrentLeg] = React.useState(1)
+    const [gameOver, setGameOver] = React.useState(false)
     
 
     let data = useLocation()
     let code = data.state.code;
-    let legs = data.state.legs;
+    let import_legs = data.state.legs;
     let creator = data.state.creator;
 
     const [turn, setTurn] = React.useState(creator)
+    const [legs, setLegs] = React.useState(import_legs || 0)
 
     const runConnect = () => {
         const chatSocket = new WebSocket('ws://' + 'localhost:8000' +'/ws/chat/'  + code +'/')
@@ -31,20 +35,18 @@ const Game = () => {
             if (data.success) {
                 console.log("success")
                 sendUsername();
-            } else if (data.username) {
-                console.log(data.username)
-                if (data.username !== localStorage.getItem('username')) {
-                    setOppUsername(data.username)
+            } else if (data.init_data) {
+                console.log(data.init_data)
+                if (data.init_data.username !== localStorage.getItem('username')) {
+                    setOppUsername(data.init_data.username)
+                    if (data.init_data.legs) {
+                        setLegs(data.init_data.legs)
+                    }
                 }
             } else if (data.message) {
                 console.log('message recieved');
             } else if (data.score.creator !== creator) {
-                console.log('score recieved!');
-                console.log(data.score)
-                console.log("TURN BEFORE RECIEVE" + turn)
-                setTurn(prevstate => !prevstate)
-                console.log(!true)
-                console.log("TURN AFTER RECIEVE" + turn)
+                updateScore(data.score.score, setOppScore)
             } else {
                 console.log(`Sorry, server response doesn't match cases`);
             }
@@ -58,7 +60,7 @@ const Game = () => {
             try {
                 chatSocket.send(JSON.stringify({
                     'type': 'send_username',
-                    'data': localStorage.getItem('username')
+                    'data': { username: localStorage.getItem('username'), legs: legs }
                 })); 
             } catch (error) {
                 console.log(error)
@@ -67,9 +69,50 @@ const Game = () => {
     }
 
     useEffect(() => {
-        runConnect(); 
+        runConnect();
     }, [])
 
+    useEffect(() => {
+        if (!myScore) {
+            setLegsWon(prevstate => {return {...legsWon, me: prevstate.me + 1}})
+            checkLegs()
+        } else if (!oppScore) {
+            setLegsWon(prevstate => {return{...legsWon, opp: prevstate.opp + 1}})
+            checkLegs()
+        } else {
+            console.log("ERROR")
+        }
+    }, [myScore, oppScore])
+
+    useEffect(() => {
+        if ((legs / 2) < legsWon.me) {
+            setGameOver(true);
+        } else if ((legs / 2) < legsWon.opp) {
+            setGameOver(true);
+        }
+    }, [legsWon])
+
+    function checkLegs() {
+        if (currentLeg < legs) {
+            // console.log((legs / 2))
+            // console.log((legsWon.me))
+            // console.log((legs / 2) < legsWon.me)
+            // if ((legs / 2) < legsWon.me) {
+            //     endGame(true)
+            // } else if ((legs / 2) < legsWon.opp) {
+            //     endGame(false)
+            // }
+            setCurrentLeg(prevstate => prevstate + 1)
+            resetGame();
+        } else {
+            setGameOver(true);
+        }
+    }
+
+    function resetGame() {
+        setMyScore(501);
+        setOppScore(501);
+    }
 
     function sendScore() {
         try {
@@ -78,41 +121,64 @@ const Game = () => {
                 'data': { creator, score: inputScore}
             })); 
         } catch (error) {
-             console.log(error)
-         }
+            console.log(error)
+        }
+    }
+
+    function updateScore(score, which) {
+        setTurn(prevstate => !prevstate);
+        which(
+            prevstate => {
+                if(prevstate <= score) {
+
+                    return 0
+                } else {
+                    return prevstate - score
+                }
+            })
     }
 
     function handleScoreSubmit(e) {
         e.preventDefault();
-        setTurn(prevstate => !prevstate);
         sendScore();
+        updateScore(inputScore, setMyScore, "me")
     }
 
     function handleScoreChange(e) {
         setInputScore(e.target.value)
     }
+    
+    function whoIsWinning() {
+        if (legsWon.me > legsWon.opp) {
+            return <p>Congrats {localStorage.getItem('username')} you have won!</p>
+        } else {
+            return <p>{oppUsername} won!</p>
+        }
+    }
 
     return (
         <>
             <div className="Game-layout">
-                {code}
-                {legs}
+                <div className="display-winner" style={gameOver ? {display: "block"} : {display: "none"}}>
+                    <p>{whoIsWinning()}</p>
+                    <a href="/user">Return home.</a>
+                </div>
                 <div id="CurrentScore-layout">
-                    <CurrentScore />
+                    <CurrentScore myScore={myScore} myName={localStorage.getItem('username')} />
                 </div>
                 <div id="OpponentScore-layout">
-                    <OpponentScore myScore={myScore} oppScore={oppScore} oppUsername={oppUsername} />
+                    <OpponentScore oppScore={oppScore} oppUsername={oppUsername} />
                 </div>
 
                 <div id="Legdisplay-layout">
-                    <Legdisplay />
+                    <Legdisplay currentLeg={currentLeg} legs={legs} legsWon={legsWon} />
                 </div>
                 <div id="ScoreRundown-layout">
                     <ScoreRundown />
                 </div>
                 <div id="Enter-Score">
                     <form onSubmit={handleScoreSubmit}>
-                        <input type="number" id="score" placeholder="Enter Round Score Here" disabled={!turn} onChange={handleScoreChange} value={inputScore}/>
+                        <input type="number" id="score" placeholder="Enter Round Score Here" disabled={!turn} onChange={handleScoreChange} value={inputScore} min="1" max="180"/>
                         <input type="submit" id="submit-score" value="Submit"/>
                     </form>
                 </div>
