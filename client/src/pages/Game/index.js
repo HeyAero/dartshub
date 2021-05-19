@@ -1,9 +1,15 @@
 import React, { useEffect } from 'react';
 import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown, Video } from '../../components'
+import { useLocation } from 'react-router-dom'
 const Game = () => {
 
+    let data = useLocation()
+    let code = data.state.code;
+    let legs = data.state.legs;
+
     useEffect(()=>{
-        const chatSocket = new WebSocket('ws://' + '0.0.0.0:8000' +'/ws/chat/'  + 'asd' +'/')
+        console.log(code)
+        const chatSocket = new WebSocket('ws://' + 'localhost:8000' +'/ws/chat/'  + code +'/')
         
         chatSocket.onopen = function() {
             console.log('workingggg')
@@ -34,11 +40,15 @@ const Game = () => {
 
     })
 
-
+    console.log("TEST")
+    console.log(code)
+    console.log(legs)
 
     return (
         <>
             <div className="Game-layout">
+                {code}
+                {legs}
                 <div id="CurrentScore-layout">
                     <CurrentScore />
                 </div>

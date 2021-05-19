@@ -25,7 +25,6 @@ const User = () => {
     const [hit0, setHit0] = React.useState(""); 
     // Modals
     const [showCreateGame, setShowCreateGame] = React.useState(false);
-
     async function getStatsInformation() {
         try {
             const response = await getAuthInstance.get('/stats/user/')
