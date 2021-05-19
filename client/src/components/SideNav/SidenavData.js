@@ -22,7 +22,7 @@ export const SidenavData = [
     {
         title: "Create A Game",
         icon: <GroupAddIcon />,
-        link: "/home"
+        link: "create"
     },
     {
         title: "Search For A Game",
