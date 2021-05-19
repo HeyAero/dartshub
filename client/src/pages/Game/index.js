@@ -1,9 +1,12 @@
 import React from 'react';
-import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown } from '../../components'
+import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown, GameNavbar } from '../../components'
 const Game = () => {
 
     return (
         <>
+        <header>
+            <GameNavbar />
+        </header>
             <div className="Game-layout">
                 <div id="CurrentScore-layout">
                     <CurrentScore />
