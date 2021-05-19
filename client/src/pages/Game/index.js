@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-import { CurrentScore, Legdisplay, OpponentScore } from '../../components'
+import { CurrentScore, Legdisplay, OpponentScore, Video } from '../../components'
+import Jitsi from 'react-jitsi'
+
 
 const Game = () => {
 
@@ -35,6 +37,8 @@ const Game = () => {
 
     })
 
+
+
     return (
         <>
             <div className="Game-layout">
@@ -55,10 +59,6 @@ const Game = () => {
                 </div>
 
             </div>
-
-
-
-
         </>
     )
 }
