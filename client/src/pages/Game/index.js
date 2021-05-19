@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 import React, { useEffect } from 'react';
-import { CurrentScore, Legdisplay, OpponentScore, Video } from '../../components'
-import Jitsi from 'react-jitsi'
-
-
-=======
-import React from 'react';
-import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown } from '../../components'
->>>>>>> 593922a2ed0785df2b2da5b30013b450ff931a3b
+import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown, Video } from '../../components'
 const Game = () => {
 
     useEffect(()=>{
