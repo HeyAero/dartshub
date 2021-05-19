@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import Jitsi from 'react-jitsi'
  
 const Video = () => {
 

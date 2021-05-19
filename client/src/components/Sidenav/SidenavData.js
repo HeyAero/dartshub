@@ -22,12 +22,12 @@ export const SidenavData = [
     {
         title: "Create A Game",
         icon: <GroupAddIcon />,
-        link: "/home"
+        link: "create"
     },
     {
         title: "Search For A Game",
         icon: <PageviewIcon />,
-        link: "/home"
+        link: "join"
     },
     {
         title: "Single Player",
@@ -45,7 +45,7 @@ export const SidenavData = [
         link: "/leaderboard"
     },
     {
-        title: "How To Play",
+        title: "How To Get Started",
         icon: <MenuBookIcon />,
         link: "/home"
     },

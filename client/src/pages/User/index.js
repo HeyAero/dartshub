@@ -1,11 +1,13 @@
 import React from 'react';
-import { Sidenav, UserInformation, StatInformation } from '../../components'
+import { Sidenav, UserInformation, StatInformation, CreateGame, JoinGame } from '../../components'
 import { getAuthInstance } from "../../actions"
 
 const User = () => {
+    // User Information
     const [auth, setAuth] = React.useState(false);
     const [username, setUsername] = React.useState(""); 
     const [email, setEmail] = React.useState(""); 
+    // Stats Data
     const [threeDartAvg, setThreeDartAvg] = React.useState(""); 
     const [oneDartAvg, setOneDartAvg] = React.useState(""); 
     const [wins, setWins] = React.useState(""); 
@@ -21,7 +23,9 @@ const User = () => {
     const [hit80, setHit80] = React.useState(""); 
     const [hit60, setHit60] = React.useState(""); 
     const [hit0, setHit0] = React.useState(""); 
-
+    // Modals
+    const [showCreateGame, setShowCreateGame] = React.useState(false);
+    const [showJoinGame, setShowJoinGame] = React.useState(false);
     async function getStatsInformation() {
         try {
             const response = await getAuthInstance.get('/stats/user/')
@@ -49,6 +53,7 @@ const User = () => {
         async function getUserInformation() {
             try {
                 const response = await getAuthInstance.get('/users/')
+                localStorage.setItem('username', response.data.username)
                 setUsername(response.data.username);
                 setEmail(response.data.email);
                 setAuth(true);
@@ -65,8 +70,14 @@ const User = () => {
         <>
             { auth ? 
             <div className="User-page">
+                <div id="createGameModal" style={showCreateGame ? {display: "block"} : {display: "none"}}>
+                    <CreateGame/>
+                </div>
+                <div id="createGameModal" style={showJoinGame ? {display: "block"} : {display: "none"}}>
+                    <JoinGame/>
+                </div>
                 <div id="Sidenav-layout">
-                    <Sidenav />
+                    <Sidenav showCreateGame={showCreateGame} setShowCreateGame={setShowCreateGame} showJoinGame={showJoinGame} setShowJoinGame={setShowJoinGame} />
                 </div>
                 <div id="UserInformation-layout">
                     <UserInformation username={username} email={email} />

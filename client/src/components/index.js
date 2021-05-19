@@ -10,8 +10,10 @@ export { default as UserStories } from './UserStories';
 export { default as CurrentScore } from './CurrentScore';
 export { default as Legdisplay } from './Legdisplay';
 export { default as OpponentScore } from './OpponentScore';
-<<<<<<< HEAD
 export { default as Video } from './Video';
-=======
 export { default as ScoreRundown } from './ScoreRundown';
->>>>>>> 593922a2ed0785df2b2da5b30013b450ff931a3b
+export { default as GameNavbar } from './GameNavbar';
+export { default as LeaderboardNav } from './LeaderboardNav';
+export { default as WinsTable } from './WinsTable';
+export { default as ThreeDartTable } from './ThreeDartTable';
+export { default as HowTo } from './HowTo';

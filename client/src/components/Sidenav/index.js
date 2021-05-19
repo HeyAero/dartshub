@@ -5,7 +5,7 @@ import {JoinGame} from '../JoinGame'
 import Modal from 'react-modal';
 
 
-const Sidenav = () => {
+const Sidenav = ({showCreateGame, setShowCreateGame, showJoinGame, setShowJoinGame}) => {
     // const [open, setOpen] = React.useState(false);
     // function openModal() {
     //     setOpen(true);
@@ -26,7 +26,13 @@ const Sidenav = () => {
                                 key={key}
                                 className="row"
                                 onClick={() => {
-                                    window.location.pathname = val.link
+                                    if (val.link == "create") {
+                                        setShowCreateGame(!showCreateGame)
+                                    } else if (val.link == "join") {
+                                        setShowJoinGame(!showJoinGame)
+                                    } else {
+                                        window.location.pathname = val.link
+                                    }
                                 }}>
                                 {" "}
                                 <div id="icon">{val.icon}</div>{" "}
@@ -50,3 +56,4 @@ const Sidenav = () => {
 }
 
 export default Sidenav;
+
