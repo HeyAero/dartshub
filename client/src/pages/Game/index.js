@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown, Video } from '../../components'
 import { useLocation } from 'react-router-dom'
+import { getAuthInstance } from "../../actions"
 const Game = () => {
 
     const [oppUsername, setOppUsername] = React.useState("")
@@ -11,6 +12,26 @@ const Game = () => {
     const [socket, setSocket] = React.useState()
     const [currentLeg, setCurrentLeg] = React.useState(1)
     const [gameOver, setGameOver] = React.useState(false)
+    const [thrown, setThrown] = React.useState(0)
+
+    // STATS
+    const [stats, setStats] = React.useState({
+        three_dart_avg: 0,
+        one_dart_avg: 0,
+        wins: 0,
+        loses: 0,
+        total_games: 1,
+        highest_finish: 0,
+        doubles_hit: 0,
+        hit_180: 0,
+        hit_160_179: 0,
+        hit_140_159: 0,
+        hit_120_139: 0,
+        hit_100_119: 0,
+        hit_80_99: 0,
+        hit_60_79: 0,
+        hit_0_59: 0
+    });  
     
 
     let data = useLocation()
@@ -80,28 +101,29 @@ const Game = () => {
             setLegsWon(prevstate => {return{...legsWon, opp: prevstate.opp + 1}})
             checkLegs()
         } else {
-            console.log("ERROR")
+            console.log(stats)
+            console.log("Game Continues")
         }
     }, [myScore, oppScore])
 
     useEffect(() => {
         if ((legs / 2) < legsWon.me) {
             setGameOver(true);
+            setStats(prevstate => {return {...stats, wins: prevstate.wins + 1 }})
+            handleStatsSubmit()
         } else if ((legs / 2) < legsWon.opp) {
+            setStats(prevstate => {return {...stats, loses: prevstate.loses + 1 }})
             setGameOver(true);
+            handleStatsSubmit()
         }
     }, [legsWon])
 
+    useEffect(() => {
+        console.log(stats)
+    }, [gameOver])
+
     function checkLegs() {
         if (currentLeg < legs) {
-            // console.log((legs / 2))
-            // console.log((legsWon.me))
-            // console.log((legs / 2) < legsWon.me)
-            // if ((legs / 2) < legsWon.me) {
-            //     endGame(true)
-            // } else if ((legs / 2) < legsWon.opp) {
-            //     endGame(false)
-            // }
             setCurrentLeg(prevstate => prevstate + 1)
             resetGame();
         } else {
@@ -138,14 +160,83 @@ const Game = () => {
             })
     }
 
+    function calcThreeDartAverage(score) {
+        let set_thrown = thrown + 1;
+        let return_val;
+        if (set_thrown == 1) {
+            return_val = parseInt(score);
+        } else {
+            return_val = ((stats.three_dart_avg * (set_thrown - 1)) + parseInt(score)) / set_thrown;
+        }
+        return return_val;
+    }
+
+    function calcOneDartAverage(score) {
+        let set_thrown = thrown + 1;
+        let return_val;
+        if (set_thrown == 1) {
+            return_val = parseInt(score) / 3;
+        } else {
+            return_val = (((stats.three_dart_avg * (set_thrown - 1)) + parseInt(score)) / set_thrown) / 3;
+        }
+        return return_val;
+    }
+
+    function handleStatsUpdate(score) {
+        let three_dart_avg = calcThreeDartAverage(score);
+        let one_dart_avg = calcOneDartAverage(score);
+        let hit_180 = stats.hit_180;
+        let hit_160_179 = stats.hit_160_179;
+        let hit_140_159 = stats.hit_140_159;
+        let hit_120_139 = stats.hit_120_139;
+        let hit_100_119 = stats.hit_100_119;
+        let hit_80_99 = stats.hit_80_99;
+        let hit_60_79 = stats.hit_60_79;
+        let hit_0_59 = stats.hit_0_59;
+
+        if (score == 180) {
+            hit_180 = hit_180 + 1;
+        } else if (160 <= score && score < 180) {
+            hit_160_179 = hit_160_179 + 1;
+        } else if (140 <= score && score  < 160) {
+            hit_140_159 = hit_140_159 + 1;
+        } else if (120 <= score && score  < 140) {
+            hit_120_139 = hit_120_139 + 1;
+        } else if (100 <= score && score  < 120) {
+            hit_100_119 = hit_100_119 + 1;
+        } else if (80 <= score && score  < 100) {
+            hit_80_99 = hit_80_99 + 1;
+        } else if (60 <= score && score  < 80) {
+            hit_60_79 = hit_60_79 + 1;
+        } else if (0 <= score && score  < 60) {
+            hit_0_59 = hit_0_59 + 1;
+        } else {
+            console.log("ERROR")
+        }
+
+        setStats({...stats, three_dart_avg, one_dart_avg, hit_180, hit_160_179, hit_140_159, hit_120_139, hit_100_119, hit_80_99, hit_60_79, hit_0_59})
+    }
+
     function handleScoreSubmit(e) {
         e.preventDefault();
-        sendScore();
+        setThrown(prevstate => prevstate + 1)
+        handleStatsUpdate(inputScore);
+        sendScore(inputScore);
         updateScore(inputScore, setMyScore, "me")
     }
 
     function handleScoreChange(e) {
         setInputScore(e.target.value)
+    }
+
+    async function handleStatsSubmit() {
+        try {
+            const response = await getAuthInstance.put('/stats/user/', {
+                stats
+            })
+        } catch (error) {
+            throw error;
+        }
     }
     
     function whoIsWinning() {
