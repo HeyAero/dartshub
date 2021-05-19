@@ -110,17 +110,17 @@ const Game = () => {
         if ((legs / 2) < legsWon.me) {
             setGameOver(true);
             setStats(prevstate => {return {...stats, wins: prevstate.wins + 1 }})
-            handleStatsSubmit()
         } else if ((legs / 2) < legsWon.opp) {
-            setStats(prevstate => {return {...stats, loses: prevstate.loses + 1 }})
             setGameOver(true);
-            handleStatsSubmit()
+            setStats(prevstate => {return {...stats, loses: prevstate.loses + 1 }})
         }
     }, [legsWon])
 
     useEffect(() => {
-        console.log(stats)
-    }, [gameOver])
+        if (gameOver) {
+            handleStatsSubmit()
+        }
+    }, [stats])
 
     function checkLegs() {
         if (currentLeg < legs) {
