@@ -4,6 +4,7 @@
 
 // Pages
 @import "./pages/User/User";
+@import "./pages/Game/Game";
 // Components
 @import './components/Navbar/Navbar';
 @import './components/Sidenav/Sidenav';
@@ -11,6 +12,10 @@
 @import './components/Sidenav/UserCards';
 @import './components/CreateGame/CreateGame';
 @import './components/JoinGame/JoinGame';
+@import './components/CurrentScore/CurrentScore';
+@import './components/Legdisplay/Legdisplay';
+@import './components/OpponentScore/OpponentScore';
+@import './components/ScoreRundown/ScoreRundown';
 // Other
 @import './components/StatInformation/StatInformation';
 // Any Universal Styling
