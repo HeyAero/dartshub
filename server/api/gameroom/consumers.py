@@ -69,11 +69,20 @@ class RoomConsumer(AsyncWebsocketConsumer):
         
     
     async def players_connected(self, event):
+        print("SEND SUCCESS")
         playerData = event['data']
         user = self.scope['user']
 
         await self.send(text_data = json.dumps({
             'success' : playerData,
+        }))
+
+    async def send_username(self, event):
+        print("SEND USERNAME")
+        playerData = event['data']
+
+        await self.send(text_data = json.dumps({
+            'username' : playerData,
         }))
 
     async def receive(self, text_data):

@@ -3,42 +3,58 @@ import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown, Video } from '..
 import { useLocation } from 'react-router-dom'
 const Game = () => {
 
+    const [oppUsername, setOppUsername] = React.useState("")
+
     let data = useLocation()
     let code = data.state.code;
     let legs = data.state.legs;
 
-    useEffect(()=>{
-        console.log(code)
+    const runConnect = () => {
         const chatSocket = new WebSocket('ws://' + 'localhost:8000' +'/ws/chat/'  + code +'/')
-        
         chatSocket.onopen = function() {
             console.log('workingggg')
           }
         
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data)
-            console.log(data.success)
 
-            switch (true) {
-                case data.success !== null :
-                    console.log('success woooo');
-                    break;
-                case data.message !== null :
-                    console.log('message recieved');
-                    break;
-                case data.score !== null:
-                    console.log('score recieved!');
-                    break;
-                default:
-                    console.log(`Sorry, server response doesn't match cases`);
-              }
+            if (data.success) {
+                console.log("success")
+                sendUsername();
+            } else if (data.username) {
+                console.log(data.username)
+                if (data.username !== localStorage.getItem('username')) {
+                    setOppUsername(data.username)
+                }
+            } else if (data.message) {
+                console.log('message recieved');
+            } else if (data.score) {
+                console.log('score recieved!');
+            } else {
+                console.log(`Sorry, server response doesn't match cases`);
+            }
         }   
         
         chatSocket.onclose = function(e) {
             console.error('Chat socket closed ');
         }
+        
+        function sendUsername() {
+            try {
+                chatSocket.send(JSON.stringify({
+                    'type': 'send_username',
+                    'data': localStorage.getItem('username')
+                })); 
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
 
-    })
+    useEffect(() => {
+        runConnect(); 
+    }, [])
+
 
     console.log("TEST")
     console.log(code)
@@ -53,7 +69,7 @@ const Game = () => {
                     <CurrentScore />
                 </div>
                 <div id="OpponentScore-layout">
-                    <OpponentScore />
+                    <OpponentScore oppUsername={oppUsername} />
                 </div>
 
                 <div id="Legdisplay-layout">

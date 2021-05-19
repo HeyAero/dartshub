@@ -52,6 +52,7 @@ const User = () => {
         async function getUserInformation() {
             try {
                 const response = await getAuthInstance.get('/users/')
+                localStorage.setItem('username', response.data.username)
                 setUsername(response.data.username);
                 setEmail(response.data.email);
                 setAuth(true);
