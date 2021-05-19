@@ -45,7 +45,7 @@ export const SidenavData = [
         link: "/leaderboard"
     },
     {
-        title: "How To Play",
+        title: "How To Get Started",
         icon: <MenuBookIcon />,
         link: "/home"
     },

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Greeting, UserStories} from '../../components'
+import { Navbar, Greeting, UserStories, HowTo} from '../../components'
 
 const Home = () => {
  
@@ -10,6 +10,7 @@ const Home = () => {
             </header>
             <Greeting />
             <UserStories />
+            <HowTo />
         </>
     )
 }
