@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'stats.apps.StatsConfig',
     'rest_framework',
     'users',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
