@@ -1,4 +1,4 @@
-import { prettyDOM, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import UserStories from '.';
 
 
