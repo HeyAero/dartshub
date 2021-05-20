@@ -2,11 +2,17 @@
     background-color: rgb(51,56,69);
 }
 .modal-body{
-    background-color: rgb(174,128,107);
+    background-color: rgb(162,164,172);
     position: absolute;
     top: 40px;
     left: 40px;
     right: 40px;
     bottom: 40px;
+    h2{
+        text-align: center;
+    }
+}
+.subtitle{
+    text-align: center;
 }
 

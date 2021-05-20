@@ -1,16 +1,17 @@
 .ThreeDartTable {
     width: 100%;
-    background-color: brown;
+    background-color: rgb(169,167,164);
     text-align: center;
     
     th{
-        background-color: cadetblue;
+        background-color: rgb(51,56,69);
         height: 5rem;
         font-size: 1.3rem;        
         border-bottom: 1px solid black;
+        color: rgb(250,251,251);
     }
     tr:hover{
-        background-color:green;
+        background-color:rgb(131, 133, 141);
     }
 
     td{
