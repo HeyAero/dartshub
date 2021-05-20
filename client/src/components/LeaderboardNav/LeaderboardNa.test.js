@@ -4,21 +4,22 @@ import LeaderboardNav from './index';
 
 describe('LeaderboardNav', () => {
 
-    beforeEach(() => {
-        render(
-            <BrowserRouter>
-            <LeaderboardNav />
-        </BrowserRouter>
-        )
-    })
+    // beforeEach(() => {
+    //     render(
+    //         <BrowserRouter>
+    //             <LeaderboardNav />
+    //         </BrowserRouter>
+    //     )
+    // })
     test('it renders a Nav bar', () => {
-       render(<LeaderboardNav />) 
-       const Leaderboardnav = screen.findByRole('navigation', { hidden: true});
-       expect(Leaderboardnav).toBeInTheDocument();
+        render(<LeaderboardNav />)
+        const Leaderboardnav = screen.queryByRole('navigation');
+        expect(Leaderboardnav).toBeInTheDocument();
     })
     test('it should render a signup form', () => {
-        const form = screen.getByLabelText('Confirm Your Password:')
-        expect(form).toBeInTheDocument()
+        render(<LeaderboardNav />)
+        const button = screen.getByRole('button')
+        expect(button).toBeInTheDocument()
     })
 
-})
+    })
