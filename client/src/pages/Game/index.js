@@ -285,7 +285,7 @@ const Game = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col">
+                    <div className="col-md">
                         <div id="Enter-Score">
                             <form onSubmit={handleScoreSubmit}>
                                 <input type="number" id="score" placeholder="Enter Round Score Here" disabled={!turn} onChange={handleScoreChange} value={inputScore} min="1" max="180"/>
@@ -293,13 +293,13 @@ const Game = () => {
                             </form>
                         </div>
                     </div>
-                    <div className="col d-flex justify-content-center">
+                    <div className="col-md d-flex justify-content-center">
                         <div id="chatbox" align="center">
                             <textarea ref= {textboxRef} id="chat-log" cols="30" rows="10" disabled></textarea><br></br>
                             <Chat ref={textboxRef} chatSocket={socket ? socket: null} />
                         </div>
                     </div>
-                    <div className="col d-flex justify-content-center">
+                    <div className="col-md d-flex justify-content-center">
 
                     </div>
                 </div>
