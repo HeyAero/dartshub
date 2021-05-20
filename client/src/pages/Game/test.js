@@ -51,12 +51,36 @@ describe('Game func test', () => {
 
     })
     test('it reduces player one score on entering score and pressing enter', async () => {
-        expect(screen.getByText('1/3')).toBeInTheDocument();
-            const input = await screen.findByPlaceholderText ('Enter Round Score Here')
-            userEvent.type(input, "50");
-            expect(parseInt(input.value)).toBe(50)
-            userEvent.type(input, '{Enter}')
-            expect(screen.getByText('451')).toBeInTheDocument();
+        
+        
+        const input = await screen.findByPlaceholderText('Enter Round Score Here')
+        userEvent.type(input, "50");
+        expect(parseInt(input.value)).toBe(50)
+        userEvent.type(input, '{Enter}')
+        expect(screen.getByText('451')).toBeInTheDocument();
+    })
+
+    test('it updates number of legs and user score to increase after one game', async () => {
+        
+        expect(screen.getByText('1/3')).toBeInTheDocument()
+        expect(screen.getByText('0 - 0')).toBeInTheDocument()
+        const input = await screen.findByPlaceholderText ('Enter Round Score Here')
+        userEvent.type(input, "550");
+        expect(parseInt(input.value)).toBe(550)
+        userEvent.type(input, '{Enter}')
+        expect(screen.getByText('2/3')).toBeInTheDocument()
+        expect(screen.getByText('1 - 0')).toBeInTheDocument()
+       
+    })
+
+    test('it reduces player one score on entering score and pressing enter', async () => {
+        
+        
+        const input = await screen.findByRole(input, {})
+        userEvent.type(input, "50");
+        expect(parseInt(input.value)).toBe(50)
+        userEvent.type(input, '{Enter}')
+        expect(screen.getByText('451')).toBeInTheDocument();
     })
 
 

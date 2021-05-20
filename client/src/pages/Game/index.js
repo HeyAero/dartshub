@@ -198,7 +198,7 @@ const Game = () => {
         } catch (error) {
             throw error;
         }
-    }
+    } 
     
     function whoIsWinning() {
         if (legsWon.me > legsWon.opp) {
@@ -235,7 +235,7 @@ const Game = () => {
                 </div>
                 <div id="Enter-Score">
                     <form onSubmit={handleScoreSubmit}>
-                        <input type="number" id="score" name='scoreinput' placeholder="Enter Round Score Here" disabled={!turn} onChange={handleScoreChange} value={inputScore} min="1" max="180"/>
+                        <input type="number" id="score" placeholder="Enter Round Score Here" disabled={!turn} onChange={handleScoreChange} value={inputScore} min="1" max="180"/>
                         <input type="submit" id="submit-score" value="Submit" disabled={!turn}/>
                     </form>
                 </div>
