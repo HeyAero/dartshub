@@ -77,7 +77,7 @@ const User = () => {
                     <JoinGame/>
                 </div>
                 <div className="sidenav-layout">
-                    <Sidenav showCreateGame={showCreateGame} setShowCreateGame={setShowCreateGame} showJoinGame={showJoinGame} setShowJoinGame={setShowJoinGame} />
+                    <Sidenav showCreateGame={showCreateGame} setShowCreateGame={setShowCreateGame} showJoinGame={showJoinGame} setShowJoinGame={setShowJoinGame} username={username} />
                 </div>
                 <div className="main-content">
                     <div className="userInformation-layout">

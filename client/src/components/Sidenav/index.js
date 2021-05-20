@@ -5,7 +5,7 @@ import {JoinGame} from '../JoinGame'
 import Modal from 'react-modal';
 
 
-const Sidenav = ({showCreateGame, setShowCreateGame, showJoinGame, setShowJoinGame}) => {
+const Sidenav = ({showCreateGame, setShowCreateGame, showJoinGame, setShowJoinGame, username}) => {
     // const [open, setOpen] = React.useState(false);
     // function openModal() {
     //     setOpen(true);
@@ -15,43 +15,40 @@ const Sidenav = ({showCreateGame, setShowCreateGame, showJoinGame, setShowJoinGa
     // }
     
     return (
-        <>
-            <div className="Sidebar">
-                <UserCard />
-            
-                <ul className="SidebarList">
-                    {SidenavData.map((val, key) => {
-                        return (
-                            <li
-                                key={key}
-                                className="row"
-                                onClick={() => {
-                                    if (val.link == "create") {
-                                        setShowCreateGame(!showCreateGame)
-                                    } else if (val.link == "join") {
-                                        setShowJoinGame(!showJoinGame)
-                                    } else {
-                                        window.location.pathname = val.link
-                                    }
-                                }}>
-                                {" "}
-                                <div id="icon">{val.icon}</div>{" "}
-                                <div id="title">
-                                    {val.title}
-                                </div>
+        <div className="Sidebar">
+            <UserCard username={username} />
+        
+            <ul className="SidebarList">
+                {SidenavData.map((val, key) => {
+                    return (
+                        <li
+                            key={key}
+                            className="row"
+                            onClick={() => {
+                                if (val.link == "create") {
+                                    setShowCreateGame(!showCreateGame)
+                                } else if (val.link == "join") {
+                                    setShowJoinGame(!showJoinGame)
+                                } else {
+                                    window.location.pathname = val.link
+                                }
+                            }}>
+                            {" "}
+                            <div id="icon">{val.icon}</div>{" "}
+                            <div id="title">
+                                {val.title}
+                            </div>
 
 
-                            </li>
+                        </li>
 
-                        )
-                    })}
+                    )
+                })}
 
 
 
-                </ul>
-            </div>
-        </>
-
+            </ul>
+        </div>
     )
 }
 
