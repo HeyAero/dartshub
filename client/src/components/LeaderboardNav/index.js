@@ -121,7 +121,7 @@ const LeaderboardNav = () =>{
                             </div>
                             <div className="form-group">
                                 <label for="confirm-pass">Confirm Your Password: </label>
-                                <input className="form-control" type="password" name="confirm-pass" placeholder="Confirm Your Password Here..." required="" autoComplete="off" aria-required="true" />
+                                <input id="confirm-pass" className="form-control" type="password" name="confirm-pass" placeholder="Confirm Your Password Here..." required="" autoComplete="off" aria-required="true" />
                             </div>
                             <div className="button">
                                 <button id="signup_btn" type="submit" value="Sign Up">Sign Up</button>
@@ -142,11 +142,11 @@ const LeaderboardNav = () =>{
                         <form className="Login-Form" noValidate="novalidate" onSubmit={handleLoginSubmit}>
                             <div className="form-group">
                             <label for="username">Enter Your username: </label>
-                                <input className="form-control" type="text" name="username" placeholder="Enter Your Username Here..." required="" autoComplete="off" aria-required="true" value={username} onChange={handleUsernameChange} />Username:
+                                <input id="username" className="form-control" type="text" name="username" placeholder="Enter Your Username Here..." required="" autoComplete="off" aria-required="true" value={username} onChange={handleUsernameChange} />Username:
                             </div>
                             <div className="form-group">
                             <label for="pass">Enter Your Password: </label>
-                                <input className="form-control" type="password" name="pass"  placeholder="Password" required="" autoComplete="off" aria-required="true" value={password} onChange={handlePasswordChange} /> Password: 
+                                <input id="pass" className="form-control" type="password" name="pass"  placeholder="Password" required="" autoComplete="off" aria-required="true" value={password} onChange={handlePasswordChange} /> Password: 
                             </div>
                             <div className="button">
                                 <button id="login_btn" type="submit" value="Sign Up">Log In</button>

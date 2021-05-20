@@ -1,20 +1,24 @@
-import userEvent from '@testing-library/user-event';
-import { queryByAttribute, render } from '@testing-library/react';
-import React from 'react';
-import '@testing-library/jest-dom/extend-expect';
-import '@testing-library/jest-dom';
-import { prettyDOM, screen } from '@testing-library/react';
-global.React = React;
-global.render = render;
-global.userEvent = userEvent;
-
+import { screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom'
 import LeaderboardNav from './index';
-import { TestScheduler } from '@jest/core';
 
 describe('LeaderboardNav', () => {
+
+    beforeEach(() => {
+        render(
+            <BrowserRouter>
+            <LeaderboardNav />
+        </BrowserRouter>
+        )
+    })
     test('it renders a Nav bar', () => {
        render(<LeaderboardNav />) 
-       const nav = screen.queryByRole('navigation');
-       expect(nav).toBeInTheDocument();
+       const Leaderboardnav = screen.findByRole('navigation', { hidden: true});
+       expect(Leaderboardnav).toBeInTheDocument();
     })
+    test('it should render a signup form', () => {
+        const form = screen.getByLabelText('Confirm Your Password:')
+        expect(form).toBeInTheDocument()
+    })
+
 })

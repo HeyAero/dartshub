@@ -14,5 +14,5 @@ describe('GameNavbar', () => {
     const button = screen.getByRole('button')
     expect(button).toBeInTheDocument()
   })
-  
+
 })

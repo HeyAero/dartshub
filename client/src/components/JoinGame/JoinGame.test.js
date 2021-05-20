@@ -1,24 +1,25 @@
-import userEvent from '@testing-library/user-event';
-import { queryByAttribute, render } from '@testing-library/react';
-import React from 'react';
-import '@testing-library/jest-dom/extend-expect';
-import '@testing-library/jest-dom';
-import { prettyDOM, screen } from '@testing-library/react';
-global.React = React;
-global.render = render;
-global.userEvent = userEvent;
-
-import JoinGame from './index';
+import { screen, fireEvent } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom'
+import JoinGame from '.';
 
 describe('JoinGame', () => {
     beforeEach(() => {
-        render(<JoinGame />)
+        render(
+        <BrowserRouter>
+            <JoinGame />
+        </BrowserRouter>
+        )
     });
 
 
-    test('it should render a quiz form', () => {
-        const form = screen.getAllByRole('form', { hidden: true})
+    test('it should render a form', () => {
+        const form = screen.getByLabelText('Your Room Code:')
         expect(form).toBeInTheDocument()
     })
+    test('it updates code on submit', () => {
+        const sub = screen.getByLabelText('Your Room Code:')
+        fireEvent.change(sub, { target: { value: 'test'}})
+        expect(sub.value).toBe('test')
+      })
 
 })
