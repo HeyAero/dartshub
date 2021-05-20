@@ -16,7 +16,6 @@ describe('Userinformation', () => {
         const table = await screen.findByRole('table');
         expect(table).toBeInTheDocument()
         expect(screen.getByText('User Information')).toBeInTheDocument();
-        expect(screen.getByText('Hey User, some of your account details are below...')).toBeInTheDocument();
 
     })
 
