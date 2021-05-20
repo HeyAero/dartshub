@@ -5,7 +5,7 @@ import {JoinGame} from '../JoinGame'
 import Modal from 'react-modal';
 
 
-const Sidenav = ({showCreateGame, setShowCreateGame, showJoinGame, setShowJoinGame, username}) => {
+const Sidenav = ({showCreateGame, setShowCreateGame, showJoinGame, setShowJoinGame, setShowLobby, showLobby, username}) => {
     // const [open, setOpen] = React.useState(false);
     // function openModal() {
     //     setOpen(true);
@@ -29,6 +29,10 @@ const Sidenav = ({showCreateGame, setShowCreateGame, showJoinGame, setShowJoinGa
                                     setShowCreateGame(!showCreateGame)
                                 } else if (val.link == "join") {
                                     setShowJoinGame(!showJoinGame)
+                                } else if (val.link == "lobby") {
+                                    setShowLobby(!showLobby)
+                                } else if (val.link == "/") {
+                                    setShowLobby(!showLobby)
                                 } else {
                                     window.location.pathname = val.link
                                 }

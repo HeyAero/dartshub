@@ -1,6 +1,7 @@
 import React from 'react';
 import { Sidenav, UserInformation, StatInformation, CreateGame, JoinGame } from '../../components'
 import { getAuthInstance } from "../../actions"
+import { Lobby } from '../'
 
 const User = () => {
     // User Information
@@ -26,6 +27,7 @@ const User = () => {
     // Modals
     const [showCreateGame, setShowCreateGame] = React.useState(false);
     const [showJoinGame, setShowJoinGame] = React.useState(false);
+    const [showLobby, setShowLobby] = React.useState(false);
     async function getStatsInformation() {
         try {
             const response = await getAuthInstance.get('/stats/user/')
@@ -77,27 +79,32 @@ const User = () => {
                     <JoinGame/>
                 </div>
                 <div className="sidenav-layout">
-                    <Sidenav showCreateGame={showCreateGame} setShowCreateGame={setShowCreateGame} showJoinGame={showJoinGame} setShowJoinGame={setShowJoinGame} username={username} />
+                    <Sidenav showCreateGame={showCreateGame} setShowCreateGame={setShowCreateGame} showJoinGame={showJoinGame} setShowJoinGame={setShowJoinGame} username={username} setShowLobby={setShowLobby} showLobby={showLobby} />
                 </div>
                 <div className="main-content">
-                    <UserInformation username={username} email={email} />
-                    <StatInformation
-                        threeDartAvg={threeDartAvg}
-                        oneDartAvg={oneDartAvg}
-                        wins={wins}
-                        loses={loses}
-                        totalGames={totalGames}
-                        highestFinish={highestFinish}
-                        doublesHit={doublesHit}
-                        hit180={hit180}
-                        hit160={hit160}
-                        hit140={hit140}
-                        hit120={hit120}
-                        hit100={hit100}
-                        hit80={hit80}
-                        hit60={hit60}
-                        hit0={hit0}
-                    />
+                    <div id="lobbyScreen" style={showLobby ? {display: "block"} : {display: "none"}} >
+                        <Lobby />
+                    </div>
+                    <div style={!showLobby ? {display: "block"} : {display: "none"}}>
+                        <UserInformation username={username} email={email} />
+                        <StatInformation
+                            threeDartAvg={threeDartAvg}
+                            oneDartAvg={oneDartAvg}
+                            wins={wins}
+                            loses={loses}
+                            totalGames={totalGames}
+                            highestFinish={highestFinish}
+                            doublesHit={doublesHit}
+                            hit180={hit180}
+                            hit160={hit160}
+                            hit140={hit140}
+                            hit120={hit120}
+                            hit100={hit100}
+                            hit80={hit80}
+                            hit60={hit60}
+                            hit0={hit0}
+                        />
+                    </div>
                 </div>
             </div>
             :
