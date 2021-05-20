@@ -9,9 +9,10 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 from datetime import timedelta
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,8 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$&(ztympm+wp85zhv2kr!1fqb=*-uriv6^hvyjd6v-hk%#ft!r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-CORS_ORIGIN_ALLOW_ALL = True
+DEBUG = False
+CORS_ALLOW_ALL_ORIGINS = True
 ALLOWED_HOSTS = ['*']
 
 
@@ -43,9 +44,11 @@ INSTALLED_APPS = [
     'stats.apps.StatsConfig',
     'rest_framework',
     'users',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,7 +56,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 REST_FRAMEWORK = {
@@ -105,15 +107,15 @@ WSGI_APPLICATION = 'api.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dartshub',
-        'USER': 'admin',
-        'PASSWORD': 'pass',
-        'HOST': 'db',
-        'PORT': '5432',
+        'NAME': 'd7v0avjv8ei1o3',
+        'USER': 'ksedsdilkitytt',
+        'PASSWORD': '2e3db6d07d08aeef44dff0058168e39b2343c7600f9e923e7033a743e6228783',
+        'HOST': 'ec2-176-34-105-15.eu-west-1.compute.amazonaws.com',
+        'PORT': 5432,
+        'CONN_MAX_AGE': 500,
     }
 }
 
@@ -168,7 +170,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("redis", 6379)],
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
         },
     },
 }
@@ -177,3 +179,5 @@ CHANNEL_LAYERS = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+django_heroku.settings(locals())
