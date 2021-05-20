@@ -86,7 +86,7 @@ const LeaderboardNav = () =>{
                             <div className="navbar-collapse" id="navbarMain">
                                
                                    
-                                        <a href='/'>Home</a>
+                                        <a className="Home-nav"href='/'>Home</a>
                                 
                                    
                                         <button className="button" id="signup" onClick={openModal}>Sign Up</button>

@@ -19,7 +19,7 @@ const GameNavbar = () => {
                         <div id="GameNav">
 
 
-                            <a href='/'>Home</a>
+                            <a className="Home-nav" href='/'>Home</a>
 
 
                             <button className="log" id="logout" onClick={openModalLogout} >Leave Game</button>
