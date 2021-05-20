@@ -1,0 +1,46 @@
+.Stats-tables{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 1fr 1fr;
+ td {
+    text-align: left;
+    padding-left: 4rem;
+ }
+}
+#Number{
+    background-color: royalblue;
+    grid-column: 1;
+    grid-row: 1/2;
+    text-align: center;
+    width: 70%;
+    margin: 2%;
+    margin-left: 5rem;
+}
+
+#Finish {
+    background-color: springgreen;    
+    grid-column: 1;
+    grid-row: 2;
+    text-align: center;
+    width: 70%;
+    margin: 2%;
+    margin-left: 5rem;
+}
+#Amount{
+    background-color: khaki;
+    grid-column: 2;
+    grid-row-start: 1/2;
+    grid-row-end: span 2;
+    text-align: center;
+    margin-right: 3rem;
+    width: 70%;
+
+}
+.headers{
+    font-weight: bolder;
+    font-size: 1.2rem;
+}
+#uname-title{
+    font-size: 1.8rem;
+    text-align: center;
+}
