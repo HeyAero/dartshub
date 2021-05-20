@@ -22,10 +22,12 @@
 @import './components/ThreeDartTable/ThreeDartTable';
 @import './components/WinsTable/WinsTable';
 @import './components/HowTo/HowTo';
+@import './components/Greeting/greeting';
 // Other
 @import './components/StatInformation/StatInformation';
 // Any Universal Styling
 
 body {
   background-color: $dartshub-white;
+  overflow-x: hidden;
 }

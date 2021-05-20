@@ -1,17 +1,16 @@
 import React from 'react';
-
+import wave from '../../images/wave.png'
 const Greeting = () => {
 
     return (
-        <>
-        
-            <h1>WELCOME TO DARTS HUB!!!</h1>
-            <h3> Enter subtitle here </h3>
-            <p> Welcome to Dartshub, where dart players around the world connect with each other from home to have a game of darts!</p>
-            <p>Register or log-in to get started!</p>
-        
-
-        </>
+        <div id="greeting">
+            <div class="container content">       
+                <h1>WELCOME TO DARTSHUB</h1>
+                <h3>A free, online, multiplayer darts match app</h3>
+                <p>No fees, no fuss. Just register and account and play instantly!</p>
+            </div>
+            <img className="greeting-wave" src={wave} alt="white wave"></img>
+        </div>
     )
 }
 export default Greeting;

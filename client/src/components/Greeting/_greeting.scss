@@ -1,0 +1,19 @@
+#greeting {
+  padding-top: 25px;
+  background-color: $dartshub-purple;
+  text-align: left;
+  color: $dartshub-white;
+
+  .content {
+    padding-bottom: 25px;
+  }
+}
+
+.greeting-wave {
+  height: 100px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    width: 250%;
+  }
+}
