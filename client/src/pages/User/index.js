@@ -70,10 +70,10 @@ const User = () => {
         <div id="user-page">
             { auth ? 
             <div className="user-page">
-                <div id="createGameModal" style={showCreateGame ? {display: "block"} : {display: "none"}}>
+                <div id="createGameModal" className={showCreateGame ? "d-flex justify-content-center align-items-center" : ""} style={showCreateGame ? {display: "block"} : {display: "none"}}>
                     <CreateGame/>
                 </div>
-                <div id="createGameModal" style={showJoinGame ? {display: "block"} : {display: "none"}}>
+                <div id="createGameModal" className={showJoinGame ? "d-flex justify-content-center align-items-center" : ""} style={showJoinGame ? {display: "block"} : {display: "none"}}>
                     <JoinGame/>
                 </div>
                 <div className="sidenav-layout">
