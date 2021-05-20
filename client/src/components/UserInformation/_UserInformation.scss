@@ -1,5 +1,7 @@
-.UserInfo-layout {
-    
+.user-info {
+    background-color: $dartshub-grey;
+    padding: 10px;
+    margin: 10px;
     h1{
         font-size: 2rem;
         text-align: center;
@@ -10,18 +12,6 @@
     }
 }
 
-#user-info{
-    table{
-        background-color: rgb(51,56,69);
-        margin-left: 5rem;
-        margin-top: 2rem;
-        color: rgb(250,251,251);
-        border-radius: 12px;
-    }
-    td{
-        padding: 1.5rem;
-    }
-}
 #Uname{
     font-weight: bolder;
     font-size: 1.5rem;

@@ -2,31 +2,14 @@ import React from "react";
 
 const UserInformation = ({username, email}) => {
     return (
-        <>
-            <div className="UserInfo-layout">
-                <h1>User Information</h1>
-                <h4> Hey User, some of your account details are below...</h4>
-                <div id="user-info">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td id="Uname">Username: </td>
-                                <td>{username}</td>
-                            </tr>
-                            <tr>
-                                <td id="Email">Email Address: </td>
-                                <td>{email}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
+        <div className="user-info">
+            <h1>User Information</h1>
+            <div>
+                <h5>Username: {username}</h5>
+                <h5>Email Address: {email}</h5>
             </div>
-
-
-        </>
+        </div>
     )
-
 }
 
 export default UserInformation;

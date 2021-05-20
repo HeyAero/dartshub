@@ -80,28 +80,24 @@ const User = () => {
                     <Sidenav showCreateGame={showCreateGame} setShowCreateGame={setShowCreateGame} showJoinGame={showJoinGame} setShowJoinGame={setShowJoinGame} username={username} />
                 </div>
                 <div className="main-content">
-                    <div className="userInformation-layout">
-                        <UserInformation username={username} email={email} />
-                    </div>
-                    <div className="statInformation-layout">
-                        <StatInformation
-                            threeDartAvg={threeDartAvg}
-                            oneDartAvg={oneDartAvg}
-                            wins={wins}
-                            loses={loses}
-                            totalGames={totalGames}
-                            highestFinish={highestFinish}
-                            doublesHit={doublesHit}
-                            hit180={hit180}
-                            hit160={hit160}
-                            hit140={hit140}
-                            hit120={hit120}
-                            hit100={hit100}
-                            hit80={hit80}
-                            hit60={hit60}
-                            hit0={hit0}
-                        />
-                    </div>
+                    <UserInformation username={username} email={email} />
+                    <StatInformation
+                        threeDartAvg={threeDartAvg}
+                        oneDartAvg={oneDartAvg}
+                        wins={wins}
+                        loses={loses}
+                        totalGames={totalGames}
+                        highestFinish={highestFinish}
+                        doublesHit={doublesHit}
+                        hit180={hit180}
+                        hit160={hit160}
+                        hit140={hit140}
+                        hit120={hit120}
+                        hit100={hit100}
+                        hit80={hit80}
+                        hit60={hit60}
+                        hit0={hit0}
+                    />
                 </div>
             </div>
             :
