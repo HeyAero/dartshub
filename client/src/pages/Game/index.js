@@ -46,7 +46,7 @@ const Game = () => {
     const [legs, setLegs] = React.useState(import_legs || 0)
 
     const runConnect = () => {
-        const chatSocket = new WebSocket('ws://' + 'dartshub.herokuapp.com' +'/ws/chat/'  + code +'/')
+        const chatSocket = new WebSocket('wss://' + 'dartshub.herokuapp.com' +'/ws/chat/'  + code +'/')
         setSocket(chatSocket)
         chatSocket.onopen = function() {
             console.log('workingggg')
