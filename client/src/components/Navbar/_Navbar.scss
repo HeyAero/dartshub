@@ -1,8 +1,22 @@
+#home-nav {
+    color: $dartshub-text-color;
+}
+
+.submit-button {
+    border-radius: 25px;
+    background-color: $dartshub-purple;
+    color: $dartshub-white;
+    border: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
 .navbar {
-    background-color: rgb(51,56,69);
+    background-color: $dartshub-purple;
 }
 .modal-body{
-    background-color: rgb(162,164,172);
+    background-color: $dartshub-grey;
     position: absolute;
     top: 40px;
     left: 40px;
@@ -15,28 +29,36 @@
 .subtitle{
     text-align: center;
 }
-.button{
+.nav-button{
     width: 7rem;
-    border-radius: 5px;
-    background-color: rgb(169,167,164);
-    color: rgb(51,56,69);
+    border-radius: 25px;
+    background-color: $dartshub-white;
+    color: $dartshub-text-color;
+    border: 0;
+    float: right;
+    margin: 0px 5px;
 }
 
-.button:hover{
-    background-color: rgb(155,98,119);
-    color: rgb(51,56,69);
-}
-#signup{
-    float: right;
-}
-#login{
-    float: right;
-    margin-right: 2rem;
-}
-#leaderboard-nav{
-    color: rgb(169,167,164);
-}
-.Home-nav{
-    color: rgb(169,167,164);
+.nav-button:hover{
+    background-color: $dartshub-grey;
 }
 
+.homenav-link {
+    background-color: $dartshub-white;
+    width: 7rem;
+    border-radius: 25px;
+    padding: 5px;
+    color: $dartshub-text-color;
+}
+
+.homenav-link:hover {
+    text-decoration: none;
+    color: $dartshub-text-color;
+}
+
+.close-button {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    border: 0;
+}
