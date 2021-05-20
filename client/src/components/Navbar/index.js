@@ -50,6 +50,7 @@ const Navbar = () =>{
                 email: email,
                 password: password
             })
+            closeModal();
             return response;
         } catch (error) {
             console.log(error.stack)

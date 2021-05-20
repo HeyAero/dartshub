@@ -14,6 +14,9 @@ const Game = () => {
     const [gameOver, setGameOver] = React.useState(false)
     const [thrown, setThrown] = React.useState(0)
 
+    const [myScoresList, setMyScoresList] = React.useState([])
+    const [oppScoresList, setOppScoresList] = React.useState([])
+
     // STATS
     const [stats, setStats] = React.useState({
         three_dart_avg: 0,
@@ -43,7 +46,7 @@ const Game = () => {
     const [legs, setLegs] = React.useState(import_legs || 0)
 
     const runConnect = () => {
-        const chatSocket = new WebSocket('ws://' + 'localhost:8000' +'/ws/chat/'  + code +'/')
+        const chatSocket = new WebSocket('ws://' + 'dartshub.herokuapp.com' +'/ws/chat/'  + code +'/')
         setSocket(chatSocket)
         chatSocket.onopen = function() {
             console.log('workingggg')
@@ -67,7 +70,7 @@ const Game = () => {
             } else if (data.message) {
                 console.log('message recieved');
             } else if (data.score.creator !== creator) {
-                updateScore(data.score.score, setOppScore)
+                updateScore(data.score.score, setOppScore, setOppScoresList)
             } else {
                 console.log(`Sorry, server response doesn't match cases`);
             }
@@ -147,7 +150,8 @@ const Game = () => {
         }
     }
 
-    function updateScore(score, which) {
+    function updateScore(score, which, list) {
+        list(oldArray => [...oldArray, score])
         setTurn(prevstate => !prevstate);
         which(
             prevstate => {
@@ -222,7 +226,7 @@ const Game = () => {
         setThrown(prevstate => prevstate + 1)
         handleStatsUpdate(inputScore);
         sendScore(inputScore);
-        updateScore(inputScore, setMyScore, "me")
+        updateScore(inputScore, setMyScore, setMyScoresList)
     }
 
     function handleScoreChange(e) {
@@ -273,7 +277,7 @@ const Game = () => {
                 <div id="Enter-Score">
                     <form onSubmit={handleScoreSubmit}>
                         <input type="number" id="score" placeholder="Enter Round Score Here" disabled={!turn} onChange={handleScoreChange} value={inputScore} min="1" max="180"/>
-                        <input type="submit" id="submit-score" value="Submit"/>
+                        <input type="submit" id="submit-score" value="Submit" disabled={!turn}/>
                     </form>
                 </div>
 
