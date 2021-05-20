@@ -20,7 +20,7 @@ const JoinGame = () => {
                 <Link to={{
                     pathname: "/game",
                     state: {code: code, creator:false}
-                }}>Submit</Link>
+                }} className="submit-button">Submit</Link>
             </form>
         </>
     )
