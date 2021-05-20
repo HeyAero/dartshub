@@ -67,41 +67,42 @@ const User = () => {
     }, [])
 
     return (
-        <>
+        <div id="user-page">
             { auth ? 
-            <div className="User-page">
+            <div className="user-page">
                 <div id="createGameModal" style={showCreateGame ? {display: "block"} : {display: "none"}}>
                     <CreateGame/>
                 </div>
                 <div id="createGameModal" style={showJoinGame ? {display: "block"} : {display: "none"}}>
                     <JoinGame/>
                 </div>
-                <div id="Sidenav-layout">
+                <div className="sidenav-layout">
                     <Sidenav showCreateGame={showCreateGame} setShowCreateGame={setShowCreateGame} showJoinGame={showJoinGame} setShowJoinGame={setShowJoinGame} />
                 </div>
-                <div id="UserInformation-layout">
-                    <UserInformation username={username} email={email} />
+                <div className="main-content">
+                    <div className="userInformation-layout">
+                        <UserInformation username={username} email={email} />
+                    </div>
+                    <div className="statInformation-layout">
+                        <StatInformation
+                            threeDartAvg={threeDartAvg}
+                            oneDartAvg={oneDartAvg}
+                            wins={wins}
+                            loses={loses}
+                            totalGames={totalGames}
+                            highestFinish={highestFinish}
+                            doublesHit={doublesHit}
+                            hit180={hit180}
+                            hit160={hit160}
+                            hit140={hit140}
+                            hit120={hit120}
+                            hit100={hit100}
+                            hit80={hit80}
+                            hit60={hit60}
+                            hit0={hit0}
+                        />
+                    </div>
                 </div>
-                <div id="StatInformation-layout">
-                    <StatInformation
-                        threeDartAvg={threeDartAvg}
-                        oneDartAvg={oneDartAvg}
-                        wins={wins}
-                        loses={loses}
-                        totalGames={totalGames}
-                        highestFinish={highestFinish}
-                        doublesHit={doublesHit}
-                        hit180={hit180}
-                        hit160={hit160}
-                        hit140={hit140}
-                        hit120={hit120}
-                        hit100={hit100}
-                        hit80={hit80}
-                        hit60={hit60}
-                        hit0={hit0}
-                    />
-                </div>
-
             </div>
             :
             <div>
@@ -110,7 +111,7 @@ const User = () => {
             </div>
             }  
 
-        </>
+        </div>
     )
 }
 
