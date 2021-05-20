@@ -1,16 +1,10 @@
-#Greeting-layout {
-    width: 70%;
-    background-color: rgb(169,167,164);
-    margin-left: 15%;
+#home-content {
+    background-color: $dartshub-grey;
     height: 20rem;
-    border-radius: 12px;
-    margin-top: 2rem;
+    padding-top: 20px;
     text-align: center;
 }
-#UserStories-layout {
-    width: 70%;
-    background-color: rgb(169,167,164);
-    margin-left: 15%;
-    margin-top: 3rem;
-    border-radius: 12px;
+
+#home {
+    background-color: $dartshub-white
 }
