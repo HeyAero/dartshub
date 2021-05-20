@@ -1,0 +1,17 @@
+#chat-inputs {
+  input {
+    width: 100%;
+    margin-bottom: 5px;
+    border-radius: 25px;
+    border: 2px solid $dartshub-dark-purple;
+  }
+
+  input[type=button] {
+    background-color: $dartshub-purple;
+    color: white;
+  }
+
+  input:focus {
+    outline: none;
+  }
+}
