@@ -8,17 +8,12 @@ global.React = React;
 global.render = render;
 global.userEvent = userEvent;
 
-import JoinGame from './index';
+import Legdisplay from './index';
 
-describe('JoinGame', () => {
-    beforeEach(() => {
-        render(<JoinGame />)
-    });
-
-
-    test('it should render a quiz form', () => {
-        const form = screen.getAllByRole('form', { hidden: true})
-        expect(form).toBeInTheDocument()
+describe('Legdisplay', () => {
+    test('it renders the legs div', () => {
+       render(<Legdisplay />) 
+       const leg = screen.queryById('legCounter');
+       expect(leg).toBeInTheDocument();
     })
-
 })
