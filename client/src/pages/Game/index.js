@@ -40,9 +40,14 @@ const Game = () => {
     
 
     let data = useLocation()
-    let code = data.state.code;
-    let import_legs = data.state.legs;
-    let creator = data.state.creator;
+    let code;
+    let import_legs;
+    let creator;
+    if (data) {
+        code = data.state.code;
+        import_legs = data.state.legs;
+        creator = data.state.creator;
+    }
 
     const [turn, setTurn] = React.useState(creator)
     const [legs, setLegs] = React.useState(import_legs || 0)
