@@ -33,6 +33,9 @@ const Sidenav = ({showCreateGame, setShowCreateGame, showJoinGame, setShowJoinGa
                                     setShowLobby(!showLobby)
                                 } else if (val.link == "/") {
                                     setShowLobby(!showLobby)
+                                } else if (val.link == "logout") {
+                                    localStorage.clear();
+                                    window.location.pathname = ""
                                 } else {
                                     window.location.pathname = val.link
                                 }
