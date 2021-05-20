@@ -8,8 +8,6 @@ const getAuthInstance = axios.create({
         'Authorization': "JWT " + localStorage.getItem('access_token'),
         'Content-Type': 'application/json',
         'accept': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': '*',
     }
 });
 
