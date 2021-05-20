@@ -6,7 +6,7 @@ const Lobby= () => {
     const [rooms, setRooms] = React.useState([]);
 
     useEffect(() => {
-        const chatSocket = new WebSocket('ws://localhost:8000/ws/game/')
+        const chatSocket = new WebSocket('wss://dartshub.herokuapp.com/ws/game/')
    
         chatSocket.onopen = function() {
             console.log('connected to lobby')
