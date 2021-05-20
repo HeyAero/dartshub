@@ -1,9 +1,7 @@
-import { screen, render, fireEvent, getByTestIdm, queryByAttribute  } from '@testing-library/react';
+import { screen, fireEvent, getByTestIdm, queryByAttribute  } from '@testing-library/react';
 import Chat from '.';
 
 describe('Chat', () => {
-  let container;
-  const getById = queryByAttribute.bind(null, 'id');
   beforeEach(() => {
     render(<Chat/>)
   })
