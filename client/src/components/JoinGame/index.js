@@ -15,7 +15,7 @@ const JoinGame = () => {
             <form id="Join-game">
                 <h1>Join a Game Here!</h1>
                 <h4>Just Enter The Room Code Below:</h4>
-                <label for="Join-Room" id="Join-Room"> Your Room Code: </label>
+                <label role="form" for="Join-Room" id="Join-Room"> Your Room Code: </label>
                 <input type="text" onChange={handleCodeChange} value={code}/><br></br>
                 <Link to={{
                     pathname: "/game",
