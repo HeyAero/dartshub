@@ -14,8 +14,8 @@ describe('CurrentScore', () => {
   })
 
   test('it renders', () => {
-    const main = screen.getByRole('body')
-    expect(main).toBeInTheDocument()
+    const nav = screen.getByRole('navigation')
+    expect(nav).toBeInTheDocument()
   })
   
   

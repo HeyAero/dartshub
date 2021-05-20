@@ -1,7 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom';
 import * as Pages from './pages';
-import { Header, Footer } from './layout'
 
 import './index.scss';
 
@@ -9,8 +8,7 @@ function App(){
 
     return(
       <>
-        {/* <Header /> */}
-           <Switch>
+        <Switch>
           <Route exact path="/">
             <Pages.Home />
           </Route>
@@ -27,7 +25,6 @@ function App(){
             <Pages.Lobby />
           </Route>
         </Switch>
-        <Footer />
       </>
     );
   
