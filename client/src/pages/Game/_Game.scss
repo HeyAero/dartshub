@@ -1,41 +1,29 @@
-.Game-layout{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr ;
-}
-#Enter-Score{
-    grid-column: 3;
-    grid-row: 2;
-}
-#CurrentScore-layout{
-    grid-column:2 ;
-    grid-row:1;
-}
-#OpponentScore-layout{
-    grid-column: 4;
-    grid-row:1;
+#gamescreen {
+    overflow-x: hidden;
 }
 
 #Legdisplay-layout{
-    grid-column: 3;
-    grid-row:1;
     margin-top: 2rem;
-    margin-left: 4.5rem;
 }
 #score{
-    width: 15rem;
-    background-color: rgb(162,164,172);
-    height: 3rem;
-    border-radius: 12px;
-    border: 3px solid rgb(51,56,69);
+    width: 50%;
+    background-color: $dartshub-grey;
+    border-radius: 25px;
+    border: 3px solid $dartshub-dark-purple;
 }
 
-#ScoreRundown-layout{
-    grid-column: 3;
-    grid-row: 2;
-    margin-top: 4rem;
+#submit-score {
+    background-color: $dartshub-purple;
+    color: white;
+    border: 0;
+    border-radius: 25px;
+    width: 50%;
+    padding: 5px 25px;
 }
 
+#Enter-Score {
+    padding: 0 5px;
+}
 .display-winner {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */

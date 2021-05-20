@@ -262,41 +262,53 @@ const Game = () => {
     }
 
     return (
-        <>
-        <header>
-            <GameNavbar />
-        </header>
+        <div id="game-screen">
+            <header>
+                <GameNavbar />
+            </header>
             <div className="Game-layout">
                 <div className="display-winner" style={gameOver ? {display: "block"} : {display: "none"}}>
                     <p>{whoIsWinning()}</p>
                     <a href="/user">Return home.</a>
                 </div>
-                <div id="CurrentScore-layout">
-                    <CurrentScore myScore={myScore} myName={localStorage.getItem('username')} />
+                <div className="row">
+                    <div className="col-4 d-flex justify-content-center">
+                        <div id="CurrentScore-layout" align="center">
+                            <CurrentScore myScore={myScore} myName={localStorage.getItem('username')} />
+                        </div>
+                    </div>
+                    <div className="col-4 d-flex justify-content-center">
+                        <div id="Legdisplay-layout" align="center">
+                            <Legdisplay currentLeg={currentLeg} legs={legs} legsWon={legsWon} />
+                        </div>
+                    </div>
+                    <div className="col-4 d-flex justify-content-center">
+                        <div id="OpponentScore-layout" align="center">
+                            <OpponentScore oppScore={oppScore} oppUsername={oppUsername} />
+                        </div>
+                    </div>
                 </div>
-                <div id="OpponentScore-layout">
-                    <OpponentScore oppScore={oppScore} oppUsername={oppUsername} />
-                </div>
+                <div className="row">
+                    <div className="col">
+                        <div id="Enter-Score">
+                            <form onSubmit={handleScoreSubmit}>
+                                <input type="number" id="score" placeholder="Enter Round Score Here" disabled={!turn} onChange={handleScoreChange} value={inputScore} min="1" max="180"/>
+                                <input type="submit" id="submit-score" value="Submit" disabled={!turn}/>
+                            </form>
+                        </div>
+                    </div>
+                    <div className="col d-flex justify-content-center">
+                        <div id="chatbox" align="center">
+                            <textarea ref= {textboxRef} id="chat-log" cols="30" rows="10" disabled></textarea><br></br>
+                            <Chat ref={textboxRef} chatSocket={socket ? socket: null} />
+                        </div>
+                    </div>
+                    <div className="col d-flex justify-content-center">
 
-                <div id="Legdisplay-layout">
-                    <Legdisplay currentLeg={currentLeg} legs={legs} legsWon={legsWon} />
+                    </div>
                 </div>
-                <div id="ScoreRundown-layout">
-                    <ScoreRundown />
-                </div>
-                <div id="Enter-Score">
-                    <form onSubmit={handleScoreSubmit}>
-                        <input type="number" id="score" placeholder="Enter Round Score Here" disabled={!turn} onChange={handleScoreChange} value={inputScore} min="1" max="180"/>
-                        <input type="submit" id="submit-score" value="Submit" disabled={!turn}/>
-                    </form>
-                </div>
-                <div id="chatbox">
-                <textarea ref= {textboxRef} id="chat-log" cols="30" rows="10" disabled></textarea><br></br>
-                <Chat ref={textboxRef} chatSocket={socket ? socket: null} />
-                </div>
-
             </div>
-        </>
+        </div>
     )
 }
 
