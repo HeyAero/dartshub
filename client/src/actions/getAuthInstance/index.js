@@ -9,6 +9,7 @@ const getAuthInstance = axios.create({
         'Content-Type': 'application/json',
         'accept': 'application/json',
         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
     }
 });
 
