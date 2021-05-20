@@ -1,12 +1,42 @@
 .navbar {
-    background-color: blue;
+    background-color: rgb(51,56,69);
 }
 .modal-body{
-    background-color: aqua;
+    background-color: rgb(162,164,172);
     position: absolute;
     top: 40px;
     left: 40px;
     right: 40px;
     bottom: 40px;
+    h2{
+        text-align: center;
+    }
+}
+.subtitle{
+    text-align: center;
+}
+.button{
+    width: 7rem;
+    border-radius: 5px;
+    background-color: rgb(169,167,164);
+    color: rgb(51,56,69);
+}
+
+.button:hover{
+    background-color: rgb(155,98,119);
+    color: rgb(51,56,69);
+}
+#signup{
+    float: right;
+}
+#login{
+    float: right;
+    margin-right: 2rem;
+}
+#leaderboard-nav{
+    color: rgb(169,167,164);
+}
+.Home-nav{
+    color: rgb(169,167,164);
 }
 

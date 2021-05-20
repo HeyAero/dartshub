@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
-import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown, Video, GameNavbar } from '../../components'
+import React, { useEffect, useRef } from 'react';
+import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown, Video, GameNavbar, Chat} from '../../components'
 import { useLocation } from 'react-router-dom'
 import { getAuthInstance } from "../../actions"
 const Game = () => {
+
+    const textboxRef = useRef()
 
     const [oppUsername, setOppUsername] = React.useState("")
     const [inputScore, setInputScore] = React.useState(0)
@@ -68,6 +70,9 @@ const Game = () => {
                     }
                 }
             } else if (data.message) {
+                console.log(textboxRef)
+                textboxRef.current.value += (data.message + '\n');
+                textboxRef.current.scrollTop = textboxRef.current.scrollHeight
                 console.log('message recieved');
             } else if (data.score.creator !== creator) {
                 updateScore(data.score.score, setOppScore, setOppScoresList)
@@ -279,6 +284,10 @@ const Game = () => {
                         <input type="number" id="score" placeholder="Enter Round Score Here" disabled={!turn} onChange={handleScoreChange} value={inputScore} min="1" max="180"/>
                         <input type="submit" id="submit-score" value="Submit" disabled={!turn}/>
                     </form>
+                </div>
+                <div id="chatbox">
+                <textarea ref= {textboxRef} id="chat-log" cols="30" rows="10" disabled></textarea><br></br>
+                <Chat ref={textboxRef} chatSocket={socket ? socket: null} />
                 </div>
 
             </div>

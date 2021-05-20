@@ -87,7 +87,7 @@ const Navbar = () =>{
                             <div className="navbar-collapse" id="navbarMain">
                                
                                    
-                                        <a href='leaderboard'>Leaderboard</a>
+                                        <a id="leaderboard-nav" href='leaderboard'>Leaderboard</a>
                                 
                                    
                                         <button className="button" id="signup" onClick={openModal}>Sign Up</button>
