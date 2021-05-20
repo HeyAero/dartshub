@@ -1,7 +1,7 @@
 import {  screen } from '@testing-library/react';
 import Game from '.';
 import 'react-router-dom';
-import { act } from 'react-dom/test-utils'
+
 
     jest.mock('react-router-dom', () => ({
         useLocation: jest.fn().mockReturnValue({
@@ -9,10 +9,23 @@ import { act } from 'react-dom/test-utils'
         })
     }))
 
+import {runConnect} from './actions'
+    
+jest.mock('./actions', () => (
+        {
+        ...(jest.requireActual('./actions')),
+        runConnect: jest.fn()
+        }
+    ))
+ 
+
 describe('Game render test', () => {
     beforeEach(() => {
         render(<Game/>);
     })
+    afterEach(() => {
+        jest.clearAllMocks();
+      });
 
     test('it renders successfully with route props', async () => {
         const chatbox = await screen.findByRole('chatbox');
@@ -26,15 +39,12 @@ describe('Game render test', () => {
 })
 
 describe('Game func test', () => {
-    const runConnect= jest.fn();
-    // beforeEach(() => {
-    //     render(<Game/>);
-    // })
+   
+    beforeEach(() => {
+        render(<Game/>);
+    })
 
     test('it renders successfully with route props', async () => {
-        await  act(async() => {
-        render(<Game />);
-         }); 
         expect(runConnect).toHaveBeenCalledTimes(1);
     })
 
