@@ -41,11 +41,15 @@ const Lobby= () => {
             console.log(r)
             let name =r.room.replace('game_','')
             return (
-                <div id='roomdiv' key= {i}>
-                    <h4>room : {i+1}</h4>
-                    <Link to={{
-                        pathname: "/game",
-                        state: {code: name, creator:false}}}>Name: {name}</Link>
+                <div id='roomdiv' className="row" key= {i}>
+                    <div class="col-md-3 text-center">
+                        <h5>RoomID : {i+1}</h5>
+                    </div>
+                    <div class="col-md-9">
+                        <Link to={{
+                            pathname: "/game",
+                            state: {code: name, creator:false}}}>Name: {name}</Link>
+                    </div>
                 </div>
             )
         })
@@ -56,11 +60,11 @@ const Lobby= () => {
    
 
     return (
-        <>
+        <div id="lobby">
                 <h1>Available Games!</h1>
                 <h4>click to enter room</h4>
                 {renderLobby()}
-        </>
+        </div>
     )
 
 
