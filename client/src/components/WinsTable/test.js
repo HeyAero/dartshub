@@ -2,7 +2,7 @@ import { prettyDOM, screen } from '@testing-library/react';
 import WinsTable from '.';
 
 
-describe('Winstable', () => {
+describe('Winstable test', () => {
     beforeEach(() => {
         render(<WinsTable/>);
     })
