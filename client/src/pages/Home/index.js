@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Greeting, UserStories } from '../../components'
+import { Navbar, Greeting, UserStories} from '../../components'
 
 const Home = () => {
 
@@ -14,6 +14,7 @@ const Home = () => {
             <div id="UserStories-layout">
                 <UserStories />
             </div>
+          
 
         </>
     )
