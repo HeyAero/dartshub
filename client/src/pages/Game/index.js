@@ -6,7 +6,7 @@ const Game = () => {
 
     const textboxRef = useRef()
 
-    const [oppUsername, setOppUsername] = React.useState("")
+    const [oppUsername, setOppUsername] = React.useState("Waiting...")
     const [inputScore, setInputScore] = React.useState(0)
     const [myScore, setMyScore] = React.useState(501)
     const [oppScore, setOppScore] = React.useState(501)
@@ -272,10 +272,8 @@ const Game = () => {
                     <a href="/user">Return home.</a>
                 </div>
                 <div className="row">
-                    <div className="col-4 d-flex justify-content-center">
-                        <div id="CurrentScore-layout" align="center">
-                            <CurrentScore myScore={myScore} myName={localStorage.getItem('username')} />
-                        </div>
+                    <div className="col-4 d-flex justify-content-center text-center">
+                        <CurrentScore myScore={myScore} myName={localStorage.getItem('username')} />
                     </div>
                     <div className="col-4 d-flex justify-content-center">
                         <div id="Legdisplay-layout" align="center">
@@ -283,9 +281,7 @@ const Game = () => {
                         </div>
                     </div>
                     <div className="col-4 d-flex justify-content-center">
-                        <div id="OpponentScore-layout" align="center">
-                            <OpponentScore oppScore={oppScore} oppUsername={oppUsername} />
-                        </div>
+                        <OpponentScore oppScore={oppScore} oppUsername={oppUsername} />
                     </div>
                 </div>
                 <div className="row">
