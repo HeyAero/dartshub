@@ -1,46 +1,51 @@
-.Stats-tables{
+.Stats-tables {
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: 1fr 1fr;
- td {
-    text-align: left;
-    padding-left: 4rem;
- }
+    td {
+        text-align: left;
+        padding-left: 4rem;
+    }
 }
-#Number{
-    background-color: royalblue;
+#Number {
+    background-color: rgb(51,56,69);
     grid-column: 1;
     grid-row: 1/2;
     text-align: center;
     width: 70%;
     margin: 2%;
     margin-left: 5rem;
+    color: rgb(250, 251, 251);
+    border-radius: 12px;
 }
 
 #Finish {
-    background-color: springgreen;    
+    background-color: rgb(51,56,69);
     grid-column: 1;
     grid-row: 2;
     text-align: center;
     width: 70%;
     margin: 2%;
     margin-left: 5rem;
+    color: rgb(250, 251, 251);
+    border-radius: 12px;
 }
-#Amount{
-    background-color: khaki;
+#Amount {
+    background-color: rgb(51,56,69);
     grid-column: 2;
     grid-row-start: 1/2;
     grid-row-end: span 2;
     text-align: center;
     margin-right: 3rem;
     width: 70%;
-
+    color: rgb(250, 251, 251);
+    border-radius: 12px;
 }
-.headers{
+.headers {
     font-weight: bolder;
     font-size: 1.2rem;
 }
-#uname-title{
+#uname-title {
     font-size: 1.8rem;
     text-align: center;
 }
