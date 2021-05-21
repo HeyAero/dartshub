@@ -10,7 +10,7 @@ const Greeting = () => {
                     <div className="col align-self-center">
                         <h1>WELCOME TO DARTSHUB</h1>
                         <h3>A free, online, multiplayer darts match app</h3>
-                        <p>No fees, no fuss. Just register and account and play instantly!</p>
+                        <p>No fees, no fuss. Just register an account and play instantly!</p>
                     </div>
                     <div className="col d-none d-sm-block">
                         <img className="greeting-board" src={board} alt="a virtual dart board"></img>

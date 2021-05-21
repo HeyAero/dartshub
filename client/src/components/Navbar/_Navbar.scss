@@ -47,13 +47,14 @@
     background-color: $dartshub-white;
     width: 7rem;
     border-radius: 25px;
-    padding: 5px;
+    padding: 2px 25px;
     color: $dartshub-text-color;
 }
 
 .homenav-link:hover {
     text-decoration: none;
     color: $dartshub-text-color;
+    background-color: $dartshub-grey;
 }
 
 .close-button {
