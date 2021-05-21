@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown, Video, GameNavbar, Chat} from '../../components'
+import { CurrentScore, Legdisplay, OpponentScore, GameNavbar, Chat} from '../../components'
 import { useLocation } from 'react-router-dom'
 import { getAuthInstance } from "../../actions"
 

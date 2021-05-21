@@ -5,7 +5,7 @@ const Home = () => {
 
     return (
         <div id="home">
-            <header>
+            <header role="header">
                 <Navbar />
             </header>
             <div id="home-content">

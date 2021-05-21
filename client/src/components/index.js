@@ -10,8 +10,6 @@ export { default as UserStories } from './UserStories';
 export { default as CurrentScore } from './CurrentScore';
 export { default as Legdisplay } from './Legdisplay';
 export { default as OpponentScore } from './OpponentScore';
-export { default as Video } from './Video';
-export { default as ScoreRundown } from './ScoreRundown';
 export { default as GameNavbar } from './GameNavbar';
 export { default as LeaderboardNav } from './LeaderboardNav';
 export { default as WinsTable } from './WinsTable';
