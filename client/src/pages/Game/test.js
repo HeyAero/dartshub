@@ -35,7 +35,7 @@ describe('Game render test', () => {
 })
 
 let ws = WS;
-describe('Game func test', () => {
+describe('Game func and websocket func tests', () => {
 
 
     let recieved = JSON.stringify({type :"chat_message", data : "null:Hey"})
@@ -52,7 +52,7 @@ describe('Game func test', () => {
       });
 
     
-    test('it on load recieves success sends init data and recieves', async () => {
+    test('it on load recieves success  message and sends/recieves init data', async () => {
         await ws.connected;
         let success = JSON.stringify({'success' : '2'})
         ws.send(success)
@@ -113,7 +113,7 @@ describe('Game func test', () => {
     test('it chat message entered it adds it to textarea when message sent', async () => {
        
         await ws.connected;
-       
+        
         const input = await screen.findByRole('chatinput')
         const textbox = await screen.findByRole('textbox')
         expect(input).toBeInTheDocument()
