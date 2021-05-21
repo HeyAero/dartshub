@@ -5,7 +5,7 @@ const CurrentScore = ({myName, myScore}) => {
         <div role="div" className="scorecontainer">
             <div id="btncontainer">
                 <h2>{myName}</h2>
-                <div className="score" id="team1">{myScore}</div>
+                <div role="playerscore" className="score" id="team1">{myScore}</div>
             </div>
         </div>
     )
