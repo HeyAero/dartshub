@@ -1,7 +1,6 @@
 import { screen } from '@testing-library/react';
 import Game from '.';
 import 'react-router-dom';
-import {runConnect} from './actions'
 import userEvent from "@testing-library/user-event";
 import WS from "jest-websocket-mock";
 
@@ -10,14 +9,6 @@ import WS from "jest-websocket-mock";
             state: {code: 'game', legs: '3', creator: true}
         })
     }))
-
-    
-    // jest.mock('./actions', () => (
-    //     {
-    //     ...(jest.requireActual('./actions')),
-    //     runConnect: jest.fn()
-    //     }
-    // ))
  
 
 describe('Game render test', () => {
@@ -61,12 +52,20 @@ describe('Game func test', () => {
       });
 
     
-    test('it runs runconnect on initial load', async () => {
+    test('it on load recieves success sends init data and recieves', async () => {
         await ws.connected;
         let success = JSON.stringify({'success' : '2'})
         ws.send(success)
 
-        let data = JSON.stringify({'init_data' : {username: 'bob', legs: 3}})
+        let userinfo = JSON.stringify({
+            type: 'send_username',
+            data: {username: null , legs: "3"}
+        })
+        await expect(ws).toReceiveMessage(userinfo)
+
+        let data = JSON.stringify({
+            init_data: {username: 'bob', legs: 3},
+        })
         ws.send(data)
         expect(screen.getByText('bob')).toBeInTheDocument();
         expect(screen.getByText('1/3')).toBeInTheDocument()
