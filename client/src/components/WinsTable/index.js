@@ -13,16 +13,16 @@ const WinsTable = () => {
                 </thead>
                 <tbody>
                 <tr>
-                    <td>'username'</td>
-                    <td>wins</td>
+                    <td>its_aaron</td>
+                    <td>45</td>
                 </tr>
                 <tr>
-                    <td>'username'</td>
-                    <td>wins</td>
+                    <td>yobro</td>
+                    <td>35</td>
                 </tr>
                 <tr>
-                    <td>'username'</td>
-                    <td>wins</td>
+                    <td>dart_guy</td>
+                    <td>32</td>
                 </tr>
 
                 </tbody>
