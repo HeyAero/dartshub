@@ -1,26 +1,3 @@
-#Leaderboard-layout{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-  
-
-}
-
-#WinsTable-layout{
-    grid-column: 1;
-    grid-row: 2;
-    width: 30rem;
-    margin-left: 10rem;
-}
-
-#ThreeDart-layout{
-    grid-column: 2;
-    grid-row: 2;
-    width: 30rem;
-    margin-left: 10%;
-}
-
-#LeaderNav{
-    grid-column-start: 1;
-    grid-column-end: 3;
+#Leaderboard-layout {
+    overflow-x: hidden;
 }
