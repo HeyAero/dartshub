@@ -1,51 +1,19 @@
-.Stats-tables {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: 1fr 1fr;
-    td {
-        text-align: left;
-        padding-left: 4rem;
-    }
-}
-#Number {
-    background-color: rgb(51,56,69);
-    grid-column: 1;
-    grid-row: 1/2;
+.user-stats {
+    overflow-x: hidden;
     text-align: center;
-    width: 70%;
-    margin: 2%;
-    margin-left: 5rem;
-    color: rgb(250, 251, 251);
-    border-radius: 12px;
 }
 
-#Finish {
-    background-color: rgb(51,56,69);
-    grid-column: 1;
-    grid-row: 2;
-    text-align: center;
-    width: 70%;
-    margin: 2%;
-    margin-left: 5rem;
-    color: rgb(250, 251, 251);
-    border-radius: 12px;
-}
-#Amount {
-    background-color: rgb(51,56,69);
-    grid-column: 2;
-    grid-row-start: 1/2;
-    grid-row-end: span 2;
-    text-align: center;
-    margin-right: 3rem;
-    width: 70%;
-    color: rgb(250, 251, 251);
-    border-radius: 12px;
-}
-.headers {
-    font-weight: bolder;
-    font-size: 1.2rem;
-}
-#uname-title {
-    font-size: 1.8rem;
-    text-align: center;
+.stats-card {
+    background-color: $dartshub-grey;
+    width: 250px;
+    height: 250px;
+    margin: 10px 0;
+    .stats-number {
+        font-size: 2rem;
+        font-weight: bolder;
+    }
+    .stats-title { 
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
 }

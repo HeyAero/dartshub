@@ -1,21 +1,18 @@
 import React from 'react';
-import { Navbar, Greeting, UserStories } from '../../components'
+import { Navbar, Greeting, UserStories} from '../../components'
 
 const Home = () => {
 
     return (
-        <>
-            <header>
+        <div id="home">
+            <header role="header">
                 <Navbar />
             </header>
-            <div id="Greeting-layout">
+            <div id="home-content">
                 <Greeting />
-            </div>
-            <div id="UserStories-layout">
                 <UserStories />
             </div>
-
-        </>
+        </div>
     )
 }
 

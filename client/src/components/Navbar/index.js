@@ -79,7 +79,7 @@ const Navbar = () =>{
 
         return (
 
-            <>
+            <div id="home-nav">
                 <header className="header">
                     <div className="nav-container">
                         <nav className="navbar">
@@ -87,13 +87,13 @@ const Navbar = () =>{
                             <div className="navbar-collapse" id="navbarMain">
                                
                                    
-                                        <a id="leaderboard-nav" href='leaderboard'>Leaderboard</a>
+                                        <a className="homenav-link" href='leaderboard'>Leaderboard</a>
                                 
                                    
-                                        <button className="button" id="signup" onClick={openModal}>Sign Up</button>
+                                        <button className="nav-button signup" onClick={openModal}>Sign Up</button>
                                 
                                    
-                                        <button className="button" id="login" onClick={openModalLogin}>Login</button>
+                                        <button className="nav-button login" onClick={openModalLogin}>Login</button>
                                 
                             </div>
                         </nav>
@@ -104,7 +104,7 @@ const Navbar = () =>{
                    
                 >
                     <div className="modal-body">
-                        <button onClick={closeModal}>X</button>
+                        <button class="close-button" onClick={closeModal}>X</button>
                         <h2>Get Started Here!</h2>
                         <span className="subtitle">Please enter your information bellow...</span>
                         <form className="Register-form" noValidate="novalidate" onSubmit={handleRegistrationSubmit}>
@@ -124,8 +124,8 @@ const Navbar = () =>{
                                 <label for="confirm-pass">Confirm Your Password: </label>
                                 <input className="form-control" type="password" name="confirm-pass" placeholder="Confirm Your Password Here..." required="" autoComplete="off" aria-required="true" />
                             </div>
-                            <div className="button">
-                                <button id="signup_btn" type="submit" value="Sign Up">Sign Up</button>
+                            <div>
+                                <button className="submit-button" type="submit" value="Sign Up">Sign Up</button>
                             </div>
                         </form>
                     </div>
@@ -137,7 +137,7 @@ const Navbar = () =>{
                     >
                 
                     <div className="modal-body">
-                     <button onClick={closeModalLogin}>X</button>
+                     <button class="close-button" onClick={closeModalLogin}>X</button>
                         <h2>Login To Get Started</h2>
                         <span className="subtitle">Enter Your Details Below</span>
                         <form className="Login-Form" noValidate="novalidate" onSubmit={handleLoginSubmit}>
@@ -149,15 +149,13 @@ const Navbar = () =>{
                             <label for="pass">Enter Your Password: </label>
                                 <input className="form-control" type="password" name="pass"  placeholder="Password" required="" autoComplete="off" aria-required="true" value={password} onChange={handlePasswordChange} /> Password: 
                             </div>
-                            <div className="button">
-                                <button id="login_btn" type="submit" value="Sign Up">Log In</button>
-                            </div>
+                            <button className="submit-button" type="submit" value="Sign Up">Log In</button>
                         </form>
                     </div>
                 </Modal>
 
                 { redirect ? <Redirect to='/user'/> : <></>}
-            </>
+            </div>
         )
     }
 

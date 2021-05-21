@@ -26,8 +26,8 @@ const Chat = ({chatSocket}) => {
 
     return(
       
-        <div id="chat-inputs" >
-        <input ref={inputRef} id="chat-message-input" type="text" size="30"onKeyUp={handleInput}></input><br></br>
+        <div id="chat-inputs" data-testid="chat-inputs">
+        <input role= "chatinput" ref={inputRef} id="chat-message-input" type="text" size="30"onKeyUp={handleInput}></input><br></br>
         <input id="chat-message-submit" type="button" value="Send" onClick={handleSubmit}></input>
         </div>
   

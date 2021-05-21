@@ -12,15 +12,15 @@ const JoinGame = () => {
 
     return (
         <>
-            <form id="Join-game">
+            <form role="form" id="Join-game">
                 <h1>Join a Game Here!</h1>
                 <h4>Just Enter The Room Code Below:</h4>
-                <label for="Join-Room" id="Join-Room"> Your Room Code: </label>
-                <input type="text" onChange={handleCodeChange} value={code}/><br></br>
+                <label  for="Join-Room" > Your Room Code: </label>
+                <input type="text" id="Join-Room" onChange={handleCodeChange} value={code}/><br></br>
                 <Link to={{
                     pathname: "/game",
                     state: {code: code, creator:false}
-                }}>Submit</Link>
+                }} className="submit-button">Submit</Link>
             </form>
         </>
     )

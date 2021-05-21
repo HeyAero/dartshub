@@ -1,6 +1,6 @@
 .WinsTable {
     width: 100%;
-    background-color: rgb(169,167,164);
+    background-color: $dartshub-grey;
     text-align: center;
     
     th{
@@ -11,7 +11,7 @@
         color: rgb(250,251,251);
     }
     tr:hover{
-        background-color: rgb(131, 133, 141);
+        background-color: #d0d1d6;
     }
     td{
         height: 3rem;
