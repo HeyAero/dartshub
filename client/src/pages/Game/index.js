@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown, Video, GameNavbar, Chat} from '../../components'
 import { useLocation } from 'react-router-dom'
 import { getAuthInstance } from "../../actions"
+
 const Game = () => {
 
     const textboxRef = useRef()
@@ -52,7 +53,7 @@ const Game = () => {
     const [turn, setTurn] = React.useState(creator)
     const [legs, setLegs] = React.useState(import_legs || 0)
 
-    const runConnect = () => {
+     const runConnect = () => {
         const chatSocket = new WebSocket('wss://' + 'dartshub.herokuapp.com' +'/ws/chat/'  + code +'/')
         setSocket(chatSocket)
         chatSocket.onopen = function() {
@@ -62,7 +63,7 @@ const Game = () => {
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data)
             console.log(data)
-
+    
             if (data.success) {
                 console.log("success")
                 sendUsername();
@@ -101,6 +102,7 @@ const Game = () => {
             }
         }
     }
+
 
     useEffect(() => {
         runConnect();
@@ -251,11 +253,13 @@ const Game = () => {
         } catch (error) {
             throw error;
         }
-    }
+    } 
     
     function whoIsWinning() {
         if (legsWon.me > legsWon.opp) {
             return <p>Congrats {localStorage.getItem('username')} you have won!</p>
+        } else if (legsWon.me == legsWon.opp) {
+            return <p>Wow its a draw!</p>
         } else {
             return <p>{oppUsername} won!</p>
         }
@@ -290,7 +294,7 @@ const Game = () => {
                         <input type="submit" id="submit-score" value="Submit" disabled={!turn}/>
                     </form>
                 </div>
-                <div id="chatbox">
+                <div role ="chatbox" id="chatbox">
                 <textarea ref= {textboxRef} id="chat-log" cols="30" rows="10" disabled></textarea><br></br>
                 <Chat ref={textboxRef} chatSocket={socket ? socket: null} />
                 </div>
