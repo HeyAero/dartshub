@@ -8,21 +8,21 @@ const ThreeDartTable = () => {
                 <thead>
                     <tr>
                         <th>USERNAME</th>
-                        <th>3-Dart Average</th>
+                        <th>3-DART AVERAGE</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>'username'</td>
-                        <td>average</td>
+                        <td>its_aaron</td>
+                        <td>102.45</td>
                     </tr>
                     <tr>
-                        <td>'username'</td>
-                        <td>average</td>
+                        <td>van_not_gerwen</td>
+                        <td>101.54</td>
                     </tr>
                     <tr>
-                        <td>'username'</td>
-                        <td>average</td>
+                        <td>mad_lad</td>
+                        <td>95.6</td>
                     </tr>
 
                 </tbody>

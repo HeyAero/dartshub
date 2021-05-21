@@ -7,6 +7,7 @@
 @import "./pages/Game/Game";
 @import "./pages/Leaderboard/Leaderboard";
 @import './pages/Home/Home';
+@import './pages/Lobby/lobby';
 // Components
 @import './components/Navbar/Navbar';
 @import './components/Sidenav/Sidenav';
@@ -17,15 +18,18 @@
 @import './components/CurrentScore/CurrentScore';
 @import './components/Legdisplay/Legdisplay';
 @import './components/OpponentScore/OpponentScore';
-@import './components/ScoreRundown/ScoreRundown';
 @import './components/GameNavbar/GameNavbar';
 @import './components/ThreeDartTable/ThreeDartTable';
 @import './components/WinsTable/WinsTable';
 @import './components/HowTo/HowTo';
+@import './components/Greeting/greeting';
+@import './components/UserStories/userstories';
+@import './components/Chat/chat';
+@import './components/LeaderboardNav/leaderboardnav';
 // Other
 @import './components/StatInformation/StatInformation';
 // Any Universal Styling
 
 body {
-  background-color: rgb(155,98,119);
+  background-color: $dartshub-white;
 }

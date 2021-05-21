@@ -10,11 +10,13 @@ const Leaderboard = () => {
                 <header id="LeaderNav">
                     <LeaderboardNav />
                 </header>
-                <div id="WinsTable-layout">
-                    <WinsTable />
-                </div>
-                <div id="ThreeDart-layout">
-                    <ThreeDartTable />
+                <div className="row">
+                    <div className="col-sm-6">
+                        <WinsTable />
+                    </div>
+                    <div className="col-sm-6">
+                        <ThreeDartTable />
+                    </div>
                 </div>
 
             </div>

@@ -1,0 +1,11 @@
+.Home-nav {
+  color: $dartshub-text-color;
+  background-color: $dartshub-white;
+  padding: 0 25px;
+  border-radius: 25px;
+}
+
+.Home-nav:hover {
+  color: $dartshub-text-color;
+  background-color: $dartshub-grey;
+}

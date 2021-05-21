@@ -1,9 +1,8 @@
 .Sidebar {
     height: 100%;
     width: 100%;
-    background-color: rgb(51,56,69);
-    color: rgb(250,251,251);
-    
+    background-color: $dartshub-purple;
+    color: $dartshub-white;
 }
 
 .SidebarList {
@@ -15,7 +14,9 @@
     li{
         width: 100%;
         height: 50px;
-        border: 3px solid rgb(162,164,172);
+        border: 1px solid $dartshub-dark-purple;
+        margin-bottom: 1px;
+        border-radius: 25px;
         list-style-type: none;
         display: flex;
         flex-direction: row;

@@ -1,6 +1,7 @@
 #Create-Game {
-    margin-top: 2rem;
-    background-color: rgb(162,164,172);
+    background-color: $dartshub-purple;
+    color: $dartshub-white;
+    padding: 25px 0;
     width: 50rem;
     text-align: center;
     h1 {
@@ -17,12 +18,14 @@
 
 #Create-Room{
     margin-top: 2.5rem;
-   
 }
-#submit-btn{
-   margin-left: 5rem;
-   margin-top: 0.5rem;
+.submit-button{
+    background-color: $dartshub-white;
+    padding: 5px 25px;
+    color: $dartshub-text-color;
 }
 #Settings{
+    margin-left: 2px;
     margin-top: 0.4rem;
+    margin-bottom: 25px;
 }

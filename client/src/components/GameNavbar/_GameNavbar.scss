@@ -1,18 +1,42 @@
 .confirm{
-    background-color: rgb(174,128,107);
-    width: 15rem;
+    background-color: $dartshub-purple;
+    color: white;
+    width: 20rem;
     text-align: center;
     margin-left: 45%;
+    padding: 25px;
+
+    button {
+        background-color: $dartshub-white;
+        border-radius: 25px;
+        min-width: 100px;
+        height: 33px;
+        border: 0;
+    }
+
+    a {
+        background-color: $dartshub-white;
+        border-radius: 25px;
+        padding: 6px 25px;
+        color: $dartshub-text-color;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: $dartshub-text-color;
+    }
 }
 #logout{
     float: right;
-    background-color: rgb(169,167,164);
-    color: rgb(51,56,69);
-}
-#logout:hover{
-    background-color: rgb(155,98,119);
-    color: rgb(51,56,69);
+    border-radius: 25px;
+    background-color: $dartshub-white;
+    color: $dartshub-text-color;
+    border: 0;
 }
 #GameNav{
     width: 100%;
+}
+
+.logout-modal {
+    background-color: $dartshub-purple;
 }

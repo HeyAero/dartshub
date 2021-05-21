@@ -16,20 +16,18 @@ const CreateGame = () => {
     }
 
     return (
-        <>
-            <form id="Create-Game">
-                <h1>Create a Game Here!</h1>
-                <h4>Fill in the details below to get started</h4>
-                <label for="Create-Room"> Enter Room-Code: </label>
-                <input type= "text" id="Create-Room" onChange={handleCodeChange} value={code}/><br></br>
-                <label for="Settings"> Number of Legs: </label>
-                <input type= "text" id="Settings" onChange={handleLegsChange} value={legs}/><br></br>
-                <Link to={{
-                    pathname: "/game",
-                    state: {code: code, legs: legs, creator:true}
-                }}>Submit</Link>
-            </form>
-        </>
+        <form id="Create-Game">
+            <h1>Create a Game Here!</h1>
+            <h4>Fill in the details below to get started</h4>
+            <label for="Create-Room"> Enter Room-Code: </label>
+            <input type= "text" id="Create-Room" onChange={handleCodeChange} value={code}/><br></br>
+            <label for="Settings"> Number of Legs: </label>
+            <input type= "text" id="Settings" onChange={handleLegsChange} value={legs}/><br></br>
+            <Link to={{
+                pathname: "/game",
+                state: {code: code, legs: legs, creator:true}
+            }} className="submit-button">Submit</Link>
+        </form>
     )
 }
 

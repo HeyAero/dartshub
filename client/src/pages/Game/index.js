@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-import { CurrentScore, Legdisplay, OpponentScore, ScoreRundown, Video, GameNavbar, Chat} from '../../components'
+import { CurrentScore, Legdisplay, OpponentScore, GameNavbar, Chat} from '../../components'
 import { useLocation } from 'react-router-dom'
 import { getAuthInstance } from "../../actions"
+
 const Game = () => {
 
     const textboxRef = useRef()
 
-    const [oppUsername, setOppUsername] = React.useState("")
+    const [oppUsername, setOppUsername] = React.useState("Waiting...")
     const [inputScore, setInputScore] = React.useState(0)
     const [myScore, setMyScore] = React.useState(501)
     const [oppScore, setOppScore] = React.useState(501)
@@ -40,14 +41,19 @@ const Game = () => {
     
 
     let data = useLocation()
-    let code = data.state.code;
-    let import_legs = data.state.legs;
-    let creator = data.state.creator;
+    let code;
+    let import_legs;
+    let creator;
+    if (data) {
+        code = data.state.code;
+        import_legs = data.state.legs;
+        creator = data.state.creator;
+    }
 
     const [turn, setTurn] = React.useState(creator)
     const [legs, setLegs] = React.useState(import_legs || 0)
 
-    const runConnect = () => {
+     const runConnect = () => {
         const chatSocket = new WebSocket('wss://' + 'dartshub.herokuapp.com' +'/ws/chat/'  + code +'/')
         setSocket(chatSocket)
         chatSocket.onopen = function() {
@@ -57,7 +63,7 @@ const Game = () => {
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data)
             console.log(data)
-
+    
             if (data.success) {
                 console.log("success")
                 sendUsername();
@@ -96,6 +102,7 @@ const Game = () => {
             }
         }
     }
+
 
     useEffect(() => {
         runConnect();
@@ -246,52 +253,62 @@ const Game = () => {
         } catch (error) {
             throw error;
         }
-    }
+    } 
     
     function whoIsWinning() {
         if (legsWon.me > legsWon.opp) {
             return <p>Congrats {localStorage.getItem('username')} you have won!</p>
+        } else if (legsWon.me == legsWon.opp) {
+            return <p>Wow its a draw!</p>
         } else {
             return <p>{oppUsername} won!</p>
         }
     }
 
     return (
-        <>
-        <header>
-            <GameNavbar />
-        </header>
+        <div id="game-screen">
+            <header>
+                <GameNavbar />
+            </header>
             <div className="Game-layout">
                 <div className="display-winner" style={gameOver ? {display: "block"} : {display: "none"}}>
                     <p>{whoIsWinning()}</p>
                     <a href="/user">Return home.</a>
                 </div>
-                <div id="CurrentScore-layout">
-                    <CurrentScore myScore={myScore} myName={localStorage.getItem('username')} />
+                <div className="row">
+                    <div className="col-4 d-flex justify-content-center text-center">
+                        <CurrentScore myScore={myScore} myName={localStorage.getItem('username')} />
+                    </div>
+                    <div className="col-4 d-flex justify-content-center">
+                        <div id="Legdisplay-layout" align="center">
+                            <Legdisplay currentLeg={currentLeg} legs={legs} legsWon={legsWon} />
+                        </div>
+                    </div>
+                    <div className="col-4 d-flex justify-content-center">
+                        <OpponentScore oppScore={oppScore} oppUsername={oppUsername} />
+                    </div>
                 </div>
-                <div id="OpponentScore-layout">
-                    <OpponentScore oppScore={oppScore} oppUsername={oppUsername} />
-                </div>
+                <div className="row">
+                    <div className="col-md">
+                        <div id="Enter-Score">
+                            <form onSubmit={handleScoreSubmit}>
+                                <input type="number" id="score" placeholder="Enter Round Score Here" disabled={!turn} onChange={handleScoreChange} value={inputScore} min="1" max="180"/>
+                                <input type="submit" id="submit-score" value="Submit" disabled={!turn}/>
+                            </form>
+                        </div>
+                    </div>
+                    <div className="col-md d-flex justify-content-center">
+                        <div role ="chatbox" id="chatbox" align="center">
+                            <textarea ref= {textboxRef} id="chat-log" cols="30" rows="10" disabled></textarea><br></br>
+                            <Chat ref={textboxRef} chatSocket={socket ? socket: null} />
+                        </div>
+                    </div>
+                    <div className="col-md d-flex justify-content-center">
 
-                <div id="Legdisplay-layout">
-                    <Legdisplay currentLeg={currentLeg} legs={legs} legsWon={legsWon} />
+                    </div>
                 </div>
-                <div id="ScoreRundown-layout">
-                    <ScoreRundown />
-                </div>
-                <div id="Enter-Score">
-                    <form onSubmit={handleScoreSubmit}>
-                        <input type="number" id="score" placeholder="Enter Round Score Here" disabled={!turn} onChange={handleScoreChange} value={inputScore} min="1" max="180"/>
-                        <input type="submit" id="submit-score" value="Submit" disabled={!turn}/>
-                    </form>
-                </div>
-                <div id="chatbox">
-                <textarea ref= {textboxRef} id="chat-log" cols="30" rows="10" disabled></textarea><br></br>
-                <Chat ref={textboxRef} chatSocket={socket ? socket: null} />
-                </div>
-
             </div>
-        </>
+        </div>
     )
 }
 

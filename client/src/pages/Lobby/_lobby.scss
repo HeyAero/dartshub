@@ -1,0 +1,21 @@
+#lobby {
+  height: 100%;
+  width: 100%;
+  padding: 25px;
+
+  h1, h4 {
+    text-align: center;
+  }
+
+  h5, a{
+    padding: 0;
+    margin: 0;
+  }
+}
+
+#roomdiv {
+  width: 100%;
+  padding: 25px 25px;
+  background-color: $dartshub-grey;
+  color: $dartshub-text-color
+}
