@@ -33,11 +33,11 @@ const GameNavbar = () => {
                 id="logout-modal" isOpen={openLogout}
                 onRequestClose={closeModalLogout}>
                 <div className="confirm">
-                    <form id="logout" >
+                    <form id="logout-form" >
                         <h4>Leave Game</h4>
                         <p>Are you sure you want to leave the game?</p>
 
-                        <input type="submit" id="logout-btn" value="Logout" />
+                        <a href="/">Leave</a>
 
 
                         <button onClick={closeModalLogout}>Cancel</button>
